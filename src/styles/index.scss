@@ -1,3 +1,18 @@
 /* 
     General Styles
 */
+body {
+    overflow-x: hidden !important;
+}
+.container {
+    
+    overflow-x: hidden !important;
+}
+.sign-up{
+    width: 500px;
+    height: 400px;
+    background: whitesmoke;
+    margin-left: auto;
+    margin-right: auto; 
+    border: solid black 1px; 
+}
