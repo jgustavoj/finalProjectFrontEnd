@@ -54,45 +54,52 @@ export const Main = () => (
 			</div>
 		</div>
 
-		<div className="text-center mt-5">
-			<h2>Ready to get to know our guy?</h2>
-		</div>
-
-		<div className="sign-up">
-			<div className="text-center">
-				<h4>Sign up!</h4>
+		<div>
+			<div className="text-center mt-5">
+				<h2>Ready to get to know our guy?</h2>
 			</div>
 
-			<form>
-				<div className="form-row">
-					<div className="col">
-						<input type="text" className="form-control" placeholder="First name" />
-					</div>
-					<div className="col">
-						<input type="text" className="form-control" placeholder="Last name" />
-					</div>
+			<div className="sign-up">
+				<div className="text-center">
+					<h4>Sign up!</h4>
 				</div>
-				<div className="form-row">
-					<label htmlFor="colFormLabel" className="col-md-0 col-form-label" />
-					<div className="col">
-						<input type="email" className="form-control" id="colFormLabel" placeholder="Email Address" />
+
+				<form>
+					<div className="form-row">
+						<div className="col">
+							<input type="text" className="form-control" placeholder="First name" />
+						</div>
+						<div className="col">
+							<input type="text" className="form-control" placeholder="Last name" />
+						</div>
 					</div>
-				</div>
-				<div className="form-group row">
-					<label htmlFor="inputPassword3" className="col-md-0 col-form-label" />
-					<div className="col-sm-10">
-						<input
-							type="password"
-							className="form-control"
-							id="inputPassword3"
-							placeholder="Create Password"
-						/>
+					<div className="form-row">
+						<label htmlFor="colFormLabel" className="col-md-0 col-form-label" />
+						<div className="col">
+							<input
+								type="email"
+								className="form-control"
+								id="colFormLabel"
+								placeholder="Email Address"
+							/>
+						</div>
 					</div>
-				</div>
-				<button type="submit" className="btn btn-primary">
-					Register
-				</button>
-			</form>
+					<div className="form-group row">
+						<label htmlFor="inputPassword3" className="col-md-0 col-form-label" />
+						<div className="col-sm-10">
+							<input
+								type="password"
+								className="form-control"
+								id="inputPassword3"
+								placeholder="Create Password"
+							/>
+						</div>
+					</div>
+					<button type="submit" className="btn btn-primary">
+						Register
+					</button>
+				</form>
+			</div>
 		</div>
 	</div>
 );
@@ -102,8 +109,8 @@ export const Main = () => (
 //<img src=rigoImage />
 //</p> */
 
-{
-	/* <form>
+//{
+/* <form>
 				<div className="row">
 					<div className="col">
 						<input type="text" className="form-control" placeholder="First name" />
@@ -126,4 +133,4 @@ export const Main = () => (
 					</div>
 				</div>
 			</form> */
-}
+// }
