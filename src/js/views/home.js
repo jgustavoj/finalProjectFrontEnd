@@ -3,15 +3,15 @@ import { Link } from "react-router-dom";
 
 import { Context } from "../store/appContext";
 
-import "../../styles/demo.scss";
+import "../../styles/home.scss";
 
-export const Demo = () => {
+export const Home = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
 		<div className="container">
 			<ul className="list-group">
-				{store.demo.map((item, index) => {
+				{store.home.map((item, index) => {
 					return (
 						<li
 							key={index}
@@ -36,7 +36,7 @@ export const Demo = () => {
 			</ul>
 			<br />
 			<Link to="/">
-				<button className="btn btn-primary">Back home</button>
+				<button className="btn btn-primary">Back Main</button>
 			</Link>
 		</div>
 	);
