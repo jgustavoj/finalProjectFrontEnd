@@ -12,7 +12,7 @@ export const Main = () => (
 				<button className="btn btn-light">Get Started</button>
 			</div>
 		</div>
-		{/* Get started Section*/}
+		{/* Get started Section/About*/}
 		<div className="text-center bg-light mb-5">
 			<h1>Organize, Remember, Schedule like never before</h1>
 			<p>
@@ -26,6 +26,9 @@ export const Main = () => (
 			</p>
 			<h4>Dont worry we got a guy for that! </h4>
 		</div>
+
+		{/* How it Works Section*/}
+
 		<div className="container mb-2">
 			<div className="row">
 				<div className="col">
@@ -54,6 +57,7 @@ export const Main = () => (
 			</div>
 		</div>
 
+		{/* login section   */}
 		<div>
 			<div className="text-center mt-5">
 				<h2>Ready to get to know our guy?</h2>
