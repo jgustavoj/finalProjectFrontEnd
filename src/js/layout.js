@@ -4,7 +4,7 @@ import ScrollToTop from "./component/scrollToTop";
 
 import { Main } from "./views/main";
 import { Login } from "./views/login";
-import { Account } from "./views/account";
+import { Events } from "./views/events";
 import { Single } from "./views/single";
 import injectContext from "./store/appContext";
 
@@ -29,9 +29,7 @@ const Layout = () => {
 						<Route exact path="/login">
 							<Login />
 						</Route>
-						<Route exact path="/account">
-							<Account />
-						</Route>
+						<Route exact path="/events" component={Events} />
 						<Route exact path="/single/:theid">
 							<Single />
 						</Route>
