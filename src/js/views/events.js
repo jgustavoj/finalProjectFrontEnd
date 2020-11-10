@@ -8,6 +8,7 @@ export const Events = () => {
 		{ startDate: "2018-11-01T12:00", endDate: "2018-11-01T13:00", title: "Go to a gym" },
 		{ startDate: "2018-11-01T13:00", endDate: "2018-11-01T14:30", title: "Groceries" }
 	]);
+	// hook? in startDate and endDate
 
 	// useEffect(() => {
 	// 	fetch(
@@ -82,17 +83,19 @@ export const Events = () => {
 	// };
 	return (
 		<>
-			<form onSubmit={e => e.preventDefault()}>
-				<label>
-					To Do: <input type="text" name="todo" value={singleEvent.title} onChange={handleChange} />
+			<div className="input-container">
+				<form onSubmit={e => e.preventDefault()}>
+					<input type="text" name="event" value={singleEvent.title} onChange={handleChange} />
+
 					<button onClick={handleClick}> Save </button>
-				</label>
-			</form>
+				</form>
+			</div>
 
 			{events.map((event, i) => {
 				return (
 					<div className="event" key={i}>
 						{event.title}
+
 						<button className="btn-delete" type="button" onClick={() => deleteTodo(i)}>
 							X
 						</button>
