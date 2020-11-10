@@ -16,14 +16,20 @@ body {
     margin-right: auto; 
     border: solid black 1px; 
 }
+
+.container-account{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    width: 100%;
+    height: 800px
+ 
+
+}
+
 .account-tab{
+    background: rgb(199, 198, 198);
     width: 500px;
     height: 400px;
-    background: rgb(185, 184, 184);
-    margin-left: auto;
-    margin-right: auto; 
-    margin-top: auto;
-    margin-bottom: auto;
-
-
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import { Register } from "../component/register.js";
 import placeholder from "../../img/placeholder.jpg";
 
 export const Main = () => (
@@ -17,12 +18,10 @@ export const Main = () => (
 			<h1>Organize, Remember, Schedule like never before</h1>
 			<p>
 				{" "}
-				Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-				industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-				scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
-				into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the
-				release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
-				software like Aldus PageMaker including versions of Lorem Ipsum.
+				We want to help you seamlessly organize and stay on top of your busy life. Well remind you through a
+				text message whenever your next assignemnt or appoinemnt is coming up. Parents learning to adapt to
+				virtual school? Well send you a message so YOU can help your child stay on top of their work. Whatever
+				reminder you need, we are the guy for that!
 			</p>
 			<h4>Dont worry we got a guy for that! </h4>
 		</div>
@@ -34,23 +33,9 @@ export const Main = () => (
 				<div className="col">
 					<img src={placeholder} />{" "}
 				</div>
-				<div className="col">
-					Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-					industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type
-					and scrambled it to make a type specimen book. It has survived not only five centuries, but also the
-					leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s
-					with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
-					publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-				</div>
+				<div className="col">Simply create an account and add your reminder due dates and times</div>
 				<div className="w-100" />
-				<div className="col">
-					Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-					industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type
-					and scrambled it to make a type specimen book. It has survived not only five centuries, but also the
-					leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s
-					with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
-					publishing software like Aldus PageMaker including versions of Lorem Ipsum
-				</div>
+				<div className="col">Add phone number and well remind you!</div>
 				<div className="col">
 					<img src={placeholder} />
 				</div>
@@ -67,42 +52,7 @@ export const Main = () => (
 				<div className="text-center">
 					<h4>Sign up!</h4>
 				</div>
-
-				<form>
-					<div className="form-row">
-						<div className="col">
-							<input type="text" className="form-control" placeholder="First name" />
-						</div>
-						<div className="col">
-							<input type="text" className="form-control" placeholder="Last name" />
-						</div>
-					</div>
-					<div className="form-row">
-						<label htmlFor="colFormLabel" className="col-md-0 col-form-label" />
-						<div className="col">
-							<input
-								type="email"
-								className="form-control"
-								id="colFormLabel"
-								placeholder="Email Address"
-							/>
-						</div>
-					</div>
-					<div className="form-group row">
-						<label htmlFor="inputPassword3" className="col-md-0 col-form-label" />
-						<div className="col-sm-10">
-							<input
-								type="password"
-								className="form-control"
-								id="inputPassword3"
-								placeholder="Create Password"
-							/>
-						</div>
-					</div>
-					<button type="submit" className="btn btn-primary">
-						Register
-					</button>
-				</form>
+				<Register />
 			</div>
 		</div>
 	</div>
