@@ -8,6 +8,15 @@ body {
     
     overflow-x: hidden !important;
 }
+.about-container{
+     display: flex;
+    justify-content: center;
+    align-items: center;
+    // width: 500px;
+    // height: 350px;
+
+}
+
 .sign-up{
     width: 500px;
     height: 400px;

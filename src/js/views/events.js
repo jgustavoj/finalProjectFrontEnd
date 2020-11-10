@@ -1,12 +1,23 @@
 import React, { useState, useEffect } from "react";
+import DatePicker from "react-datepicker";
+import Paper from "@material-ui/core/Paper";
+import { ViewState } from "@devexpress/dx-react-scheduler";
+import { Scheduler, DayView, WeekView, MonthView, Appointments } from "@devexpress/dx-react-scheduler-material-ui";
 import { Link } from "react-router-dom";
 
+import "react-datepicker/dist/react-datepicker.css";
+
 export const Events = () => {
-	const [singleEvent, setSingleEvent] = useState({});
+	const [startDate, setStartDate] = useState(new Date());
+	const [endDate, setEndDate] = useState(new Date());
+	const currentDate = "2018-11-01";
+
+	const [singleEvent, setSingleEvent] = useState();
 	const [events, setEvents] = useState([
 		{ startDate: "2018-11-01T09:45", endDate: "2018-11-01T11:00", title: "Meeting" },
 		{ startDate: "2018-11-01T12:00", endDate: "2018-11-01T13:00", title: "Go to a gym" },
-		{ startDate: "2018-11-01T13:00", endDate: "2018-11-01T14:30", title: "Groceries" }
+		{ startDate: "2018-11-01T13:00", endDate: "2018-11-01T14:30", title: "Groceries" },
+		{ startDate: "2018-11-01T15:00", endDate: "2018-11-01T15:30", title: "Run" }
 	]);
 	// hook? in startDate and endDate
 
@@ -32,9 +43,15 @@ export const Events = () => {
 	// }, []);
 
 	const handleChange = e => {
-		setSingleEvent({ label: e.target.value, done: false });
+		setSingleEvent(e.target.value);
 	};
 	const handleClick = e => {
+		const newEvent = {
+			startDate: startDate,
+			endDate: endDate,
+			title: singleEvent
+		};
+		setEvents([...events, newEvent]);
 		// 	fetch(
 		// 		"https://3000-e602aabd-5ee2-4e3c-83ab-16569a08f1a5.ws-us02.gitpod.io/todos",
 		// 		{
@@ -84,8 +101,10 @@ export const Events = () => {
 	return (
 		<>
 			<div className="input-container">
+				<DatePicker selected={startDate} onChange={date => setStartDate(date)} />
+				<DatePicker selected={endDate} onChange={date => setEndDate(date)} />
 				<form onSubmit={e => e.preventDefault()}>
-					<input type="text" name="event" value={singleEvent.title} onChange={handleChange} />
+					<input type="text" name="event" value={singleEvent} onChange={handleChange} />
 
 					<button onClick={handleClick}> Save </button>
 				</form>
@@ -102,6 +121,13 @@ export const Events = () => {
 					</div>
 				);
 			})}
+			<Paper>
+				<Scheduler data={events}>
+					<ViewState currentDate={currentDate} />
+					<MonthView startDayHour={0} endDayHour={24} />
+					<Appointments />
+				</Scheduler>
+			</Paper>
 		</>
 	);
 };
