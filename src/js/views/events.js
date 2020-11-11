@@ -1,8 +1,24 @@
 import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import Paper from "@material-ui/core/Paper";
+//import Radio from '@material-ui/core/Radio';
+//import RadioGroup from '@material-ui/core/RadioGroup';
+//import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { ViewState } from "@devexpress/dx-react-scheduler";
-import { Scheduler, DayView, WeekView, MonthView, Appointments } from "@devexpress/dx-react-scheduler-material-ui";
+
+import {
+	Scheduler,
+	ViewSwitcher,
+	DayView,
+	WeekView,
+	MonthView,
+	Toolbar,
+	DateNavigator,
+	Appointments,
+	TodayButton
+} from "@devexpress/dx-react-scheduler-material-ui";
+//import { appointments } from "../../../demo-data/month-appointments";
+
 import { Link } from "react-router-dom";
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -98,6 +114,20 @@ export const Events = () => {
 	//after filtering the function we needed to set the new todos to the updated (setTodos) so it can show the new
 	//list of labels without the item we deleted
 	// };
+
+	//   export default class Demo extends React.PureComponent {
+	//   constructor(props) {
+	//     super(props);
+
+	//     this.state = {
+	//       data: appointments,
+	//     };
+	//   }
+
+	//   render() {
+	//     const { data } = this.state;
+	//TURN THIS CLASS INTO A HOOK IN ORDER TO MAKE DATE NAVIGATION EASIER
+
 	return (
 		<>
 			<div className="input-container">
@@ -105,7 +135,6 @@ export const Events = () => {
 				<DatePicker selected={endDate} onChange={date => setEndDate(date)} />
 				<form onSubmit={e => e.preventDefault()}>
 					<input type="text" name="event" value={singleEvent} onChange={handleChange} />
-
 					<button onClick={handleClick}> Save </button>
 				</form>
 			</div>
@@ -124,7 +153,10 @@ export const Events = () => {
 			<Paper>
 				<Scheduler data={events}>
 					<ViewState currentDate={currentDate} />
-					<MonthView startDayHour={0} endDayHour={24} />
+					<MonthView startDayHour={7} endDayHour={20} />
+					<Toolbar />
+					<DateNavigator />
+					<TodayButton />
 					<Appointments />
 				</Scheduler>
 			</Paper>
