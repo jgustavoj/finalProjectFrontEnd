@@ -9,6 +9,12 @@ export const Navbar = () => {
 				<span className="navbar-brand mb-0 h1">About</span>
 				<span className="navbar-brand mb-0 h1">How it works</span>
 			</Link>
+			<Link to="calendar">
+				<span className="navbar-brand mb-0 h1">Calendar</span>
+			</Link>
+			<Link to="/events">
+				<span className="navbar-brand mb-0 h1">Add New Event</span>
+			</Link>
 			<div className="ml-auto">
 				<Link to="/login">
 					<button className="btn btn-light">Login</button>

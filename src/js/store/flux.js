@@ -1,17 +1,11 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
+			events: [
+				{ startDate: "2020-11-12T09:45", title: "Meeting" },
+				{ startDate: "2020-11-13T12:00", title: "Go to a gym" },
+				{ startDate: "2020-11-14T13:00", title: "Groceries" },
+				{ startDate: "2020-11-11T15:00", title: "Run" }
 			]
 		},
 		actions: {

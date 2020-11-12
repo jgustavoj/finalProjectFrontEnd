@@ -24,142 +24,164 @@ import { Link } from "react-router-dom";
 import "react-datepicker/dist/react-datepicker.css";
 
 export const Events = () => {
-	const [startDate, setStartDate] = useState(new Date());
-	const [endDate, setEndDate] = useState(new Date());
-	const currentDate = "2018-11-01";
+	const [startDate, setStartDate] = useState("");
+	const [endDate, setEndDate] = useState("");
+	const [title, setTitle] = useState("");
+	const [time, setTime] = useState("");
+	const currentDate = new Date();
+
+	const [state, setState] = useState({
+		title: "",
+		date: "",
+		time: "",
+		dayOf: false,
+		dayPrior: false,
+		twoDaysPrior: false,
+		weekPrior: false,
+		twoWeekPrior: false
+	});
 
 	const [singleEvent, setSingleEvent] = useState();
 	const [events, setEvents] = useState([
-		{ startDate: "2018-11-01T09:45", endDate: "2018-11-01T11:00", title: "Meeting" },
-		{ startDate: "2018-11-01T12:00", endDate: "2018-11-01T13:00", title: "Go to a gym" },
-		{ startDate: "2018-11-01T13:00", endDate: "2018-11-01T14:30", title: "Groceries" },
-		{ startDate: "2018-11-01T15:00", endDate: "2018-11-01T15:30", title: "Run" }
+		// { startDate: "2018-11-01T09:45", endDate: "2018-11-01T11:00", title: "Meeting" },
+		// { startDate: "2018-11-01T12:00", endDate: "2018-11-01T13:00", title: "Go to a gym" },
+		// { startDate: "2018-11-01T13:00", endDate: "2018-11-01T14:30", title: "Groceries" },
+		// { startDate: "2018-11-01T15:00", endDate: "2018-11-01T15:30", title: "Run" }
 	]);
-	// hook? in startDate and endDate
-
-	// useEffect(() => {
-	// 	fetch(
-	// 		"https://3000-e602aabd-5ee2-4e3c-83ab-16569a08f1a5.ws-us02.gitpod.io/todos"
-	// 	)
-	// 		.then(function(response) {
-	// 			if (!response.ok) {
-	// 				throw Error(response.statusText);
-	// 			}
-	// 			// Read the response as json.
-	// 			return response.json();
-	// 		})
-	// 		.then(function(responseAsJson) {
-	// 			// Do stuff with the JSON
-	// 			console.log("responseAsJson", responseAsJson);
-	// 			setTodos(responseAsJson);
-	// 		})
-	// 		.catch(function(error) {
-	// 			console.log("Looks like there was a problem: \n", error);
-	// 		});
-	// }, []);
 
 	const handleChange = e => {
 		setSingleEvent(e.target.value);
 	};
 	const handleClick = e => {
 		const newEvent = {
+			title: title,
+			time: time,
 			startDate: startDate,
-			endDate: endDate,
-			title: singleEvent
+			notifications: {
+				dayOf: false,
+				dayPrior: false,
+				twoDaysPrior: false,
+				weekPrior: false,
+				twoWeekPrior: false
+			}
 		};
 		setEvents([...events, newEvent]);
-		// 	fetch(
-		// 		"https://3000-e602aabd-5ee2-4e3c-83ab-16569a08f1a5.ws-us02.gitpod.io/todos",
-		// 		{
-		// 			method: "POST",
-		// 			body: JSON.stringify(singleTodo), // data can be `string` or {object}!
-		// 			headers: {
-		// 				"Content-Type": "application/json"
-		// 			}
-		// 		}
-		// 	)
-		// 		.then(res => res.json())
-		// 		.then(response => setTodos(response))
-		// 		.catch(error => console.error("Error", error));
-		// 	setSingleTodo({ label: "" });
 	};
-
-	// const deleteTodo = id => {
-	// 	fetch(
-	// 		"https://3000-e602aabd-5ee2-4e3c-83ab-16569a08f1a5.ws-us02.gitpod.io/todos" +
-	// 			"/" +
-	// 			id,
-	// 		{
-	// 			method: "DELETE",
-	// 			headers: {
-	// 				"Content-Type": "application/json"
-	// 			}
-	// 		}
-	// 	)
-	// 		.then(function(response) {
-	// 			if (!response.ok) {
-	// 				throw Error(response.statusText);
-	// 			}
-	// 			return response.json();
-	// 		})
-	// 		.then(function(responseAsJson) {
-	// 			console.log("responseAsJson", responseAsJson);
-	// 			setTodos(responseAsJson);
-	// 		})
-	// 		.catch(function(error) {
-	// 			console.log("Looks like there was a problem: \n", error);
-	// 		});
-
-	//filter cannot be a standalone function, it needs to be a variable example: var newTodos =
-	//after filtering the function we needed to set the new todos to the updated (setTodos) so it can show the new
-	//list of labels without the item we deleted
-	// };
-
-	//   export default class Demo extends React.PureComponent {
-	//   constructor(props) {
-	//     super(props);
-
-	//     this.state = {
-	//       data: appointments,
-	//     };
-	//   }
-
-	//   render() {
-	//     const { data } = this.state;
-	//TURN THIS CLASS INTO A HOOK IN ORDER TO MAKE DATE NAVIGATION EASIER
 
 	return (
 		<>
 			<div className="input-container">
+				<div className="input-group mb-3">
+					<div className="input-group-prepend">
+						<span className="input-group-text" id="inputGroup-sizing-default">
+							Title
+						</span>
+					</div>
+					<input
+						onChange={e => setTitle(e.target.value)}
+						type="text"
+						className="form-control"
+						aria-label="Default"
+						aria-describedby="inputGroup-sizing-default"
+					/>
+				</div>
+				<div className="input-group mb-3">
+					<div className="input-group-prepend">
+						<span className="input-group-text" id="inputGroup-sizing-default">
+							Date
+						</span>
+					</div>
+					<input
+						onChange={e => setStartDate(e.target.value)}
+						type="text"
+						className="form-control"
+						aria-label="Default"
+						aria-describedby="inputGroup-sizing-default"
+					/>
+				</div>
+				<div className="input-group mb-3">
+					<div className="input-group-prepend">
+						<span className="input-group-text" id="inputGroup-sizing-default">
+							Time
+						</span>
+					</div>
+					<input
+						onChange={e => setTime(e.target.value)}
+						type="text"
+						className="form-control"
+						aria-label="Default"
+						aria-describedby="inputGroup-sizing-default"
+					/>
+				</div>
+				<div className="input-group mb-3">
+					<div className="input-group-prepend ml-2">
+						<span className="input-group-text" id="inputGroup-sizing-default">
+							Day Of
+						</span>
+					</div>
+					<div className="input-group-text">
+						<input type="checkbox" aria-label="Checkbox for following text input" />
+					</div>
+					<div className="input-group-prepend ml-2">
+						<span className="input-group-text" id="inputGroup-sizing-default">
+							Day Prior
+						</span>
+					</div>
+					<div className="input-group-text">
+						<input type="checkbox" aria-label="Checkbox for following text input" />
+					</div>
+					<div className="input-group-prepend ml-2">
+						<span className="input-group-text" id="inputGroup-sizing-default">
+							Two Days Prior
+						</span>
+					</div>
+					<div className="input-group-text">
+						<input type="checkbox" aria-label="Checkbox for following text input" />
+					</div>
+					<div className="input-group-prepend ml-2">
+						<span className="input-group-text" id="inputGroup-sizing-default">
+							Week Prior
+						</span>
+					</div>
+					<div className="input-group-text">
+						<input type="checkbox" aria-label="Checkbox for following text input" />
+					</div>
+					<div className="input-group-prepend ml-2">
+						<span className="input-group-text" id="inputGroup-sizing-default">
+							Two Weeks Prior
+						</span>
+					</div>
+					<div className="input-group-text">
+						<input type="checkbox" aria-label="Checkbox for following text input" />
+					</div>
+				</div>
+				<button className="btn btn-lg btn-primary px-5" onClick={handleClick}>
+					Add
+				</button>
+				<button className="btn btn-lg btn-primary px-5" onClick={handleClick}>
+					Submit
+				</button>
+			</div>
+
+			{/* <div className="input-container">
 				<DatePicker selected={startDate} onChange={date => setStartDate(date)} />
 				<DatePicker selected={endDate} onChange={date => setEndDate(date)} />
 				<form onSubmit={e => e.preventDefault()}>
 					<input type="text" name="event" value={singleEvent} onChange={handleChange} />
 					<button onClick={handleClick}> Save </button>
 				</form>
-			</div>
+			</div> */}
 
 			{events.map((event, i) => {
 				return (
 					<div className="event" key={i}>
-						{event.title}
-
+						{event.title}, {event.startDate}, {event.time},
 						<button className="btn-delete" type="button" onClick={() => deleteTodo(i)}>
 							X
 						</button>
 					</div>
 				);
 			})}
-			<Paper>
-				<Scheduler data={events}>
-					<ViewState currentDate={currentDate} />
-					<MonthView startDayHour={7} endDayHour={20} />
-					<Toolbar />
-					<DateNavigator />
-					<TodayButton />
-					<Appointments />
-				</Scheduler>
-			</Paper>
 		</>
 	);
 };
