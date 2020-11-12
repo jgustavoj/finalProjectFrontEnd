@@ -20,6 +20,11 @@ export const Navbar = () => {
 					<button className="btn btn-light">Login</button>
 				</Link>
 			</div>
+			<div className="float-right">
+				<Link to="/">
+					<button className="btn btn-dark">Sign Out</button>
+				</Link>
+			</div>
 		</nav>
 	);
 };

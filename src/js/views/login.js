@@ -33,7 +33,7 @@ export const Login = () => {
 								<Register />
 							) : (
 								<form>
-									<div className="form-row">
+									<div className="form-group row">
 										<label htmlFor="colFormLabel" className="col-md-0 col-form-label" />
 										<div className="col">
 											<input

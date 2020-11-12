@@ -15,7 +15,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			loadSomeData: () => {
 				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
+					fetch().then().then(data => setStore({ "foo": data.bar })
 				*/
 			},
 			changeColor: (index, color) => {

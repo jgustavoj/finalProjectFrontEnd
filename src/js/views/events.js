@@ -46,7 +46,7 @@ export const Events = () => {
 		// { startDate: "2018-11-01T09:45", endDate: "2018-11-01T11:00", title: "Meeting" },
 		// { startDate: "2018-11-01T12:00", endDate: "2018-11-01T13:00", title: "Go to a gym" },
 		// { startDate: "2018-11-01T13:00", endDate: "2018-11-01T14:30", title: "Groceries" },
-		// { startDate: "2018-11-01T15:00", endDate: "2018-11-01T15:30", title: "Run" }
+		// { startDate: "2018-11-01T15:00", endDate: "2018-11-0115:30", title: "Run" }
 	]);
 
 	const handleChange = e => {
@@ -67,6 +67,8 @@ export const Events = () => {
 		};
 		setEvents([...events, newEvent]);
 	};
+
+	//one to many relationship on backend "notifications"
 
 	return (
 		<>
