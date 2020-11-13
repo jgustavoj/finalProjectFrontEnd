@@ -21,7 +21,53 @@ export const About = () => {
 					<h4>Dont worry we got a guy for that! </h4>
 				</div>
 			</div>
-			<div className="how-it-works">
+			<div className="projects-section bg-light" id="projects">
+				<div className="container">
+					<div className="row justify-content-center no-gutters mb-5 mb-lg-0">
+						<div className="col-lg-6">
+							<img className="img-fluid" src={menmarker} />
+						</div>
+						<div className="col-lg-6">
+							<div className="text-center h-100">
+								<div className="d-flex h-100">
+									<div className="project-text w-100 my-auto text-center text-lg-left">
+										<h4 className="text-black"> Add</h4>
+										<p className="mb-0 text-black-50">
+											Simply create an account and add your reminder due dates and times
+										</p>
+										<hr className="d-none d-lg-block mb-0 ml-0" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div className="row justify-content-center no-gutters ">
+						<div className="col-lg-6">
+							<img className="img-fluid" src={working} />
+						</div>
+						<div className="col-lg-6 order-lg-first">
+							<div className="text-center h-100">
+								<div className="d-flex h-100">
+									<div className="project-text w-100 my-auto text-center text-lg-right">
+										<h4 className="text-black"> Get Notified</h4>
+										<p className="mb-0 text-black-50">Add phone number and well remind you! </p>
+										<hr className="d-none d-lg-block mb-0 mr-0" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</>
+	);
+};
+
+// Test code for diff approach on image
+
+{
+	/*
+        <div className="how-it-works">
 				<div className="container mb-2">
 					<div className="row">
 						<div className="col">
@@ -35,7 +81,5 @@ export const About = () => {
 						</div>
 					</div>
 				</div>
-			</div>
-		</>
-	);
-};
+			</div> */
+}

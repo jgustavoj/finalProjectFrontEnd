@@ -56,7 +56,7 @@ export const Login = () => {
 										</div>
 									</div>
 									<Link to="/calendar">
-										<button type="submit" className="btn btn-primary text-center">
+										<button type="button" className="btn btn-primary text-center">
 											Sign In
 										</button>
 									</Link>
