@@ -22,105 +22,36 @@ body {
 #mainNav {
     min-height: 3.5rem;
     background-color: white;
-    .navbar-toggler {
-        font-size: 80%;
-        padding: 0.75rem;
-        color: black;
-        border: border-width solid black;
-        &:focus {
-            outline: none;
-        }
-    }
     .navbar-brand {
         color: black;
         font-weight: 700;
         padding: 0.9rem 0;
     }
-    .navbar-nav {
-        .nav-item {
-            &:hover {
-                color: fade(white, 80%);
-                outline: none;
-                background-color: transparent;
-            }
-            &:active,
-            &:focus {
-                outline: none;
-                background-color: transparent;
-            }
-        }
-    }
-    // @include media-breakpoint-up(lg) {
-    //     padding-top: 0;
-    //     padding-bottom: 0;
-    //     border-bottom: none;
-    //     background-color: transparent;
-    //     transition: background-color 0.3s ease-in-out;
-    //     .navbar-brand {
-    //         padding: 0.5rem 0;
-    //         color: fade-out($white, 0.5);
-    //     }
-    //     .nav-link {
-    //         transition: none;
-    //         padding: 2rem 1.5rem;
-    //         color: fade-out($white, 0.5);
-    //         &:hover {
-    //             color: fade-out($white, 0.25);
-    //         }
-    //         &:active {
-    //             color: $white;
-    //         }
-    //     }
-    //     &.navbar-shrink {
-    //         background-color: $white;
-    //         .navbar-brand {
-    //             color: $black;
-    //         }
-    //         .nav-link {
-    //             color: $black;
-    //             padding: 1.5rem 1.5rem 1.25rem;
-    //             border-bottom: 0.25rem solid transparent;
-    //             &:hover {
-    //                 color: $primary;
-    //             }
-    //             &:active {
-    //                 color: darken($primary, 15%);
-    //             }
-    //             &.active {
-    //                 color: $primary;
-    //                 outline: none;
-    //                 border-bottom: 0.25rem solid $primary;
-    //             }
-    //         }
-    //     }
-    // }
 }
-
-
   
-.masthead {
+.jumbotron {
     position: relative;
+    margin-bottom: 0;
     width: 100%;
     height: auto;
     min-height: 60rem;
     padding: 15rem 0;
     background: linear-gradient(
             to bottom,
-            #{fade-out(white, 0.7)} 0%,
-            #{fade-out(grey, 0.3)} 75%,
-            whitesmoke 100%
+            #{fade-out(rgb(207, 206, 206), 0.7)} 0%,
+            #{fade-out((white), 0.3)} 75%,
+            white 100%
          ),
     url("../img/pad.jpg");
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: scroll;
     background-size: cover;
     h1 {
         //font-family: $font-family-special;
         font-size: 2.5rem;
         line-height: 2.5rem;
         letter-spacing: 0.8rem;
-        //background: linear-gradient(fade-out(white, 0.1), fade-out(white, 1));
+        //background: linear-gradient(fade-out(black, 0.1), fade-out(black, 1));
         //-webkit-text-fill-color: transparent;
         background-clip: text;
     }
@@ -128,35 +59,24 @@ body {
         max-width: 20rem;
         font-size: 1rem;
     }
-    // @include media-breakpoint-up(md) {
-    //     h1 {
-    //         font-size: 4rem;
-    //         line-height: 4rem;
-    //     }
-    // }
-    // @include media-breakpoint-up(lg) {
-    //     height: 100vh;
-    //     padding: 0;
-    //     h1 {
-    //         font-size: 6.5rem;
-    //         line-height: 6.5rem;
-    //         letter-spacing: 0.8rem;
-    //     }
-    //     h2 {
-    //         max-width: 30rem;
-    //         font-size: 1.25rem;
-    //     }
-    // }
+}
+.about-section {
+    padding-top: 10rem;
+    background: linear-gradient(
+        to bottom, white, rgb(207, 206, 206)
+    );
+    p {
+        margin-bottom: 5rem;
+    }
 }
 
 
 
-
-.about-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+// .about-container{
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+// }
 
 .sign-up{
     width: 500px;

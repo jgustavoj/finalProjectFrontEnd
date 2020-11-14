@@ -1,7 +1,7 @@
 import React from "react";
 import working from "../../img/working.jpg";
 import menmarker from "../../img/manmarker.jpg";
-import Image from "react-image-resizer";
+import iphone from "../../img/iphone.png";
 
 export const About = () => {
 	return (
@@ -17,10 +17,10 @@ export const About = () => {
 								Parents learning to adapt to virtual school? Well send you a message so YOU can help
 								your child stay on top of their work. Whatever reminder and schedule you need....
 							</p>
-							<h4 className="text-black">Dont worry we got a guy for that! </h4>
+							<h4 className="text-black mb-3">Dont worry we got a guy for that! </h4>
 						</div>
 					</div>
-					{/* <img className="img-fluid" src={working} /> */}
+					<img className="img-fluid" src={iphone} height={350} width={300} />
 				</div>
 			</div>
 
