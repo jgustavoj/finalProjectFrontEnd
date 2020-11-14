@@ -6,21 +6,24 @@ import Image from "react-image-resizer";
 export const About = () => {
 	return (
 		<>
-			<div className="about-container">
-				<div className="text-center bg-light mb-5">
-					<h1>Organize, Remember, Schedule like never before</h1>
-
-					<p>
-						{" "}
-						We want to help you seamlessly organize and stay on top of your busy life. Well remind you
-						through a text message whenever your next assignemnt or appoinment is coming up. Parents
-						learning to adapt to virtual school? Well send you a message so YOU can help your child stay on
-						top of their work. Whatever reminder and schedule you need....
-					</p>
-
-					<h4>Dont worry we got a guy for that! </h4>
+			<div className="about-section bg-light text-center" id="about">
+				<div className="container">
+					<div className="row">
+						<div className="col-lg-8 mx-auto">
+							<h2 className="text-black mb-4">Organize, Remember, Schedule like never before</h2>
+							<p className="text-black-50">
+								We want to help you seamlessly organize and stay on top of your busy life. Well remind
+								you through a text message whenever your next assignemnt or appoinment is coming up.
+								Parents learning to adapt to virtual school? Well send you a message so YOU can help
+								your child stay on top of their work. Whatever reminder and schedule you need....
+							</p>
+							<h4 className="text-black">Dont worry we got a guy for that! </h4>
+						</div>
+					</div>
+					{/* <img className="img-fluid" src={working} /> */}
 				</div>
 			</div>
+
 			<div className="projects-section bg-light" id="projects">
 				<div className="container">
 					<div className="row justify-content-center no-gutters mb-5 mb-lg-0">
@@ -35,6 +38,7 @@ export const About = () => {
 										<p className="mb-0 text-black-50">
 											Simply create an account and add your reminder due dates and times
 										</p>
+
 										<hr className="d-none d-lg-block mb-0 ml-0" />
 									</div>
 								</div>
@@ -83,3 +87,19 @@ export const About = () => {
 				</div>
 			</div> */
 }
+
+// <div className="about-container">
+// 	<div className="text-center bg-light mb-5">
+// 		<h1>Organize, Remember, Schedule like never before</h1>
+
+// 		<p>
+// 			{" "}
+// 			We want to help you seamlessly organize and stay on top of your busy life. Well remind you
+// 			through a text message whenever your next assignemnt or appoinment is coming up. Parents
+// 			learning to adapt to virtual school? Well send you a message so YOU can help your child stay on
+// 			top of their work. Whatever reminder and schedule you need....
+// 		</p>
+
+// 		<h4>Dont worry we got a guy for that! </h4>
+// 	</div>
+// </div>
