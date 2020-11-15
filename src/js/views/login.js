@@ -11,7 +11,8 @@ export const Login = () => {
 		<>
 			{/* <div className="container"> */}
 			<div className="row justify-content-center no-gutters">
-				<div className="col">
+				<div className="col-lg-4" />
+				<div className="col-lg-4">
 					<div className="card">
 						<div className="container-account">
 							{/* <div className="account-tab"> */}
@@ -72,6 +73,7 @@ export const Login = () => {
 						</div>
 					</div>
 				</div>
+				<div className="col-lg-4" />
 			</div>
 			{/* </div> */}
 		</>

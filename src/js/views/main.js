@@ -10,12 +10,13 @@ export const Main = () => {
 			<About />
 			{/* login section   */}
 			<div>
-				<div className="text-center mt-5 mb-5">
+				{/* <div className="text-center mt-5 mb-4">
 					<h2>Ready to get to know our guy?</h2>
-				</div>
-				<div className="sign-up">
-					<div className="text-center">
-						<h4>Sign up!</h4>
+				</div> */}
+				<div className="sign-up mt-5">
+					<div className="text-center mb-5">
+						<i className="far fa-paper-plane fa-2x" />
+						<h2 id="sign-up">Sign up!</h2>
 					</div>
 					<Register />
 				</div>
