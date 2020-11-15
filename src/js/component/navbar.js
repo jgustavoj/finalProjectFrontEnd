@@ -7,6 +7,9 @@ export const Navbar = () => {
 			<Link to="/">
 				<span className="navbar-brand mb-0 h1">Home</span>
 				<span className="navbar-brand mb-0 h1">About</span>
+				{/* <a className="btn btn-secondary js-scroll-trigger" href="#about">
+					About
+				</a> */}
 				<span className="navbar-brand mb-0 h1">How it works</span>
 			</Link>
 			<Link to="calendar">
@@ -31,3 +34,5 @@ export const Navbar = () => {
 
 // navbar navbar-expand-lg navbar-light fixed-top bg-white mb-3
 //bd-navbar flex-md-row flex-column
+
+//navbar-brand mb-0 h1

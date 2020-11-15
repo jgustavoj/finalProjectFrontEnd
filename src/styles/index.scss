@@ -4,20 +4,6 @@
 body {
     overflow-x: hidden !important;
 }
-// .container {
-    
-//     overflow-x: hidden !important;
-// }
-
-// #people {
-//     height: 100px;
-//     width: 100px;
-// }
-// .jumbotron{
-//     background-image: url("../img/pad.jpg");
-//     background-size: cover; 
-   
-// }
 
 #mainNav {
     min-height: 3.5rem;
@@ -60,6 +46,7 @@ body {
         font-size: 1rem;
     }
 }
+
 .about-section {
     padding-top: 10rem;
     background: linear-gradient(
@@ -70,37 +57,38 @@ body {
     }
 }
 
-
-
-// .about-container{
+// .sign-up{
+//     width: 500px;
+//     height: 400px;
+//     background: whitesmoke;
+//     margin-left: auto;
+//     margin-right: auto; 
+//     border: solid black 1px; 
+// }
+.card {
+        border: 0;
+        border-bottom: 0.25rem solid black;
+    
+}
+.container-account{
+     margin-top: 100px;
 //     display: flex;
 //     justify-content: center;
 //     align-items: center;
+//     width: 100%;
+//     height: 800px
+ }
+
+// .account-tab{
+//     background: rgb(199, 198, 198);
+//     width: 500px;
+//     height: 450px;
 // }
 
-.sign-up{
-    width: 500px;
-    height: 400px;
-    background: whitesmoke;
-    margin-left: auto;
-    margin-right: auto; 
-    border: solid black 1px; 
-}
-.container-account{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 800px
-}
-.account-tab{
-    background: rgb(199, 198, 198);
-    width: 500px;
-    height: 450px;
-}
 .input-container{
     margin-top: 100px;
 }
+
 .projects-section {
     padding: 10rem 0;
     .featured-text {

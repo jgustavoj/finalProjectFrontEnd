@@ -10,7 +10,7 @@ export const Main = () => {
 			<About />
 			{/* login section   */}
 			<div>
-				<div className="text-center mt-5">
+				<div className="text-center mt-5 mb-5">
 					<h2>Ready to get to know our guy?</h2>
 				</div>
 				<div className="sign-up">
