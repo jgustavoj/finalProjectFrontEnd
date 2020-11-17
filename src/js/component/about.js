@@ -13,9 +13,10 @@ export const About = () => {
 							<h2 className="text-black mb-4">Organize, Remember, Schedule like never before</h2>
 							<p className="text-black-50">
 								We want to help you seamlessly organize and stay on top of your busy life. Well remind
-								you through a text message whenever your next assignemnt or appoinment is coming up.
-								Parents learning to adapt to virtual school? Well send you a message so YOU can help
-								your child stay on top of their work. Whatever reminder and schedule you need....
+								you through a text message whenever your next assignment or appoinment is coming up. Are
+								you a parent learning to adapt to virtual school during COVID-19? Well send you a
+								message so YOU can help your child stay on top of their work. Whatever reminder and
+								schedule you need....
 							</p>
 							<h4 className="text-black mb-4">Dont worry we got a guy for that! </h4>
 						</div>

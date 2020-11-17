@@ -6,11 +6,8 @@ export const Navbar = () => {
 		<nav className="navbar navbar-expand-lg navbar-light fixed-top mb-20" id="mainNav">
 			<Link to="/">
 				<span className="navbar-brand mb-0 h1">Home</span>
-				<span className="navbar-brand mb-0 h1">About</span>
-				{/* <a className="btn btn-secondary js-scroll-trigger" href="#about">
-					About
-				</a> */}
-				<span className="navbar-brand mb-0 h1">How it works</span>
+				{/* <span className="navbar-brand mb-0 h1">About</span>
+				<span className="navbar-brand mb-0 h1">How it works</span> */}
 			</Link>
 			<Link to="calendar">
 				<span className="navbar-brand mb-0 h1">Calendar</span>

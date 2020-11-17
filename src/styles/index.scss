@@ -69,26 +69,28 @@ body {
 .card {
         border: 0;
         border-bottom: 0.25rem solid black;
+        margin-top: 20px;
     
 }
-.container-account{
-     margin-top: 100px;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     width: 100%;
-//     height: 800px
- }
+// .container-account{
+//      margin-top: 100px;
+// //     display: flex;
+// //     justify-content: center;
+// //     align-items: center;
+// //     width: 100%;
+// //     height: 800px
+//  }
 
-// .account-tab{
-//     background: rgb(199, 198, 198);
-//     width: 500px;
-//     height: 450px;
-// }
+.account-tab{
+  margin-top: 100px;
+}
 
 .input-container{
     margin-top: 100px;
 }
+// #uncontrolled-tab-example{
+//     margin-top: 30px;
+// }
 
 .projects-section {
     padding: 10rem 0;
@@ -111,3 +113,4 @@ body {
 //                  0px 14px 10px rgba(0, 0, 0, 0.226),
 //                  0px 24px 2px rgba(0, 0, 0, 0.253),
 //                  0px 34px 30px rgba(0, 0, 0, 0.13);}
+

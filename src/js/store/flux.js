@@ -1,6 +1,19 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			users: [
+				{
+					firstName: "Gustavo",
+					lastName: "Jimenez",
+					email: "jimenezgustavoandres@gmail.com",
+					phoneNumber: "3057984105",
+					password: "123"
+				}
+			],
+			currentUser: {
+				email: "",
+				token: null
+			},
 			events: [
 				{ startDate: "2020-11-12T09:45", title: "Meeting" },
 				{ startDate: "2020-11-13T12:00", title: "Go to a gym" },
@@ -31,6 +44,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
+			},
+			login: (email, password) => {
+				const store = getStore();
+				// const found = store.users.find(element => element.email == email);
+				for (let x of store.users) {
+					if (x.email == email) {
+						setStore({
+							currentUser: {
+								email: email,
+								token: "lgfshalhfgsdkjgfhlksdfhglkdhfsl"
+							}
+						});
+					}
+				}
 			}
 		}
 	};
