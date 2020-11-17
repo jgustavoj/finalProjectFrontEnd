@@ -8,8 +8,6 @@ import Tabs from "react-bootstrap/Tabs";
 import { Context } from "../store/appContext";
 
 export const Login = () => {
-	// const [logging, setLogging] = useState("");
-
 	return (
 		<>
 			<div className="account-tab">

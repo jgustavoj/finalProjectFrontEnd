@@ -8,7 +8,7 @@ export const Jumbotron = () => {
 					<div className="mx-auto text-center">
 						<h1 className="mx-auto my-0 text-uppercase">The Schedule Guy</h1>
 						<h2 className="text-black-50 mx-auto mt-2 mb-5">Its easy as one Click</h2>
-						<a className="btn btn-secondary js-scroll-trigger" href="#about">
+						<a className="btn btn-secondary" href="#about">
 							Get Started
 						</a>
 					</div>
@@ -17,12 +17,3 @@ export const Jumbotron = () => {
 		</>
 	);
 };
-
-// <div className="jumbotron">
-// 				<div className="container">
-// 					<h1 className="display-4">The Schedule Guy</h1>
-// 					<p className="lead">Its easy as one Click </p>
-// 					{/* this button should take me to the how it works page  */}
-// 					<button className="btn btn-light">Get Started</button>
-// 				</div>
-// 			</div>

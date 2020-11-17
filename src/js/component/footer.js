@@ -23,7 +23,3 @@ export const Footer = () => (
 		</div>
 	</>
 );
-
-{
-	/* <img className="img-fluid" src={iphone2} height={350} width={300} /> */
-}

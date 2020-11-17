@@ -1,134 +1,93 @@
-import React, { useState, useEffect } from "react";
+import * as React from "react";
 import Paper from "@material-ui/core/Paper";
-import { ViewState } from "@devexpress/dx-react-scheduler";
+import { ViewState, EditingState } from "@devexpress/dx-react-scheduler";
 import {
 	Scheduler,
-	ViewSwitcher,
-	DayView,
-	WeekView,
-	MonthView,
-	Toolbar,
-	DateNavigator,
 	Appointments,
-	TodayButton
+	AppointmentForm,
+	AppointmentTooltip,
+	WeekView,
+	EditRecurrenceMenu,
+	AllDayPanel,
+	ConfirmationDialog
 } from "@devexpress/dx-react-scheduler-material-ui";
-import "react-datepicker/dist/react-datepicker.css";
+import { appointments } from "../store/appointments";
 
-export const Calendar = () => {
-	const currentDate = new Date();
-	const [startDate, setStartDate] = useState(new Date());
-	const [endDate, setEndDate] = useState(new Date());
+export class Calendar extends React.PureComponent {
+	constructor(props) {
+		super(props);
+		this.state = {
+			data: appointments,
+			currentDate: new Date(),
 
-	const [events, setEvents] = useState([
-		{ startDate: "2020-11-12T09:45", title: "Meeting" },
-		{ startDate: "2020-11-13T12:00", title: "Go to a gym" },
-		{ startDate: "2020-11-14T13:00", title: "Groceries" },
-		{ startDate: "2020-11-11T15:00", title: "Run" }
-	]);
-
-	// useEffect(() => {
-	// 	fetch(
-	// 		"https://3000-e602aabd-5ee2-4e3c-83ab-16569a08f1a5.ws-us02.gitpod.io/todos"
-	// 	)
-	// 		.then(function(response) {
-	// 			if (!response.ok) {
-	// 				throw Error(response.statusText);
-	// 			}
-	// 			// Read the response as json.
-	// 			return response.json();
-	// 		})
-	// 		.then(function(responseAsJson) {
-	// 			// Do stuff with the JSON
-	// 			console.log("responseAsJson", responseAsJson);
-	// 			setTodos(responseAsJson);
-	// 		})
-	// 		.catch(function(error) {
-	// 			console.log("Looks like there was a problem: \n", error);
-	// 		});
-	// }, []);
-
-	const handleChange = e => {
-		setSingleEvent(e.target.value);
-	};
-	const handleClick = e => {
-		const newEvent = {
-			startDate: startDate,
-			endDate: endDate,
-			title: singleEvent
+			addedAppointment: {},
+			appointmentChanges: {},
+			editingAppointment: undefined
 		};
-		setEvents([...events, newEvent]);
-		// 	fetch(
-		// 		"https://3000-e602aabd-5ee2-4e3c-83ab-16569a08f1a5.ws-us02.gitpod.io/todos",
-		// 		{
-		// 			method: "POST",
-		// 			body: JSON.stringify(singleTodo), // data can be `string` or {object}!
-		// 			headers: {
-		// 				"Content-Type": "application/json"
-		// 			}
-		// 		}
-		// 	)
-		// 		.then(res => res.json())
-		// 		.then(response => setTodos(response))
-		// 		.catch(error => console.error("Error", error));
-		// 	setSingleTodo({ label: "" });
-	};
 
-	// const deleteTodo = id => {
-	// 	fetch(
-	// 		"https://3000-e602aabd-5ee2-4e3c-83ab-16569a08f1a5.ws-us02.gitpod.io/todos" +
-	// 			"/" +
-	// 			id,
-	// 		{
-	// 			method: "DELETE",
-	// 			headers: {
-	// 				"Content-Type": "application/json"
-	// 			}
-	// 		}
-	// 	)
-	// 		.then(function(response) {
-	// 			if (!response.ok) {
-	// 				throw Error(response.statusText);
-	// 			}
-	// 			return response.json();
-	// 		})
-	// 		.then(function(responseAsJson) {
-	// 			console.log("responseAsJson", responseAsJson);
-	// 			setTodos(responseAsJson);
-	// 		})
-	// 		.catch(function(error) {
-	// 			console.log("Looks like there was a problem: \n", error);
-	// 		});
+		this.commitChanges = this.commitChanges.bind(this);
+		this.changeAddedAppointment = this.changeAddedAppointment.bind(this);
+		this.changeAppointmentChanges = this.changeAppointmentChanges.bind(this);
+		this.changeEditingAppointment = this.changeEditingAppointment.bind(this);
+	}
 
-	//filter cannot be a standalone function, it needs to be a variable example: var newTodos =
-	//after filtering the function we needed to set the new todos to the updated (setTodos) so it can show the new
-	//list of labels without the item we deleted
-	// };
+	changeAddedAppointment(addedAppointment) {
+		this.setState({ addedAppointment });
+	}
 
-	//   export default class Demo extends React.PureComponent {
-	//   constructor(props) {
-	//     super(props);
+	changeAppointmentChanges(appointmentChanges) {
+		this.setState({ appointmentChanges });
+	}
 
-	//     this.state = {
-	//       data: appointments,
-	//     };
-	//   }
+	changeEditingAppointment(editingAppointment) {
+		this.setState({ editingAppointment });
+	}
 
-	//   render() {
-	//     const { data } = this.state;
-	//TURN THIS CLASS INTO A HOOK IN ORDER TO MAKE DATE NAVIGATION EASIER
+	commitChanges({ added, changed, deleted }) {
+		this.setState(state => {
+			let { data } = state;
+			if (added) {
+				const startingAddedId = data.length > 0 ? data[data.length - 1].id + 1 : 0;
+				data = [...data, { id: startingAddedId, ...added }];
+			}
+			if (changed) {
+				data = data.map(
+					appointment =>
+						changed[appointment.id] ? { ...appointment, ...changed[appointment.id] } : appointment
+				);
+			}
+			if (deleted !== undefined) {
+				data = data.filter(appointment => appointment.id !== deleted);
+			}
+			return { data };
+		});
+	}
 
-	return (
-		<>
+	render() {
+		const { currentDate, data, addedAppointment, appointmentChanges, editingAppointment } = this.state;
+
+		return (
 			<Paper>
-				<Scheduler data={events}>
+				<Scheduler data={data} height={700}>
 					<ViewState currentDate={currentDate} />
-					<MonthView startDayHour={7} endDayHour={20} />
-					<Toolbar />
-					<DateNavigator />
-					<TodayButton />
+					<EditingState
+						onCommitChanges={this.commitChanges}
+						addedAppointment={addedAppointment}
+						onAddedAppointmentChange={this.changeAddedAppointment}
+						appointmentChanges={appointmentChanges}
+						onAppointmentChangesChange={this.changeAppointmentChanges}
+						editingAppointment={editingAppointment}
+						onEditingAppointmentChange={this.changeEditingAppointment}
+					/>
+					<WeekView startDayHour={9} endDayHour={17} />
+					<AllDayPanel />
+					<EditRecurrenceMenu />
+					<ConfirmationDialog />
 					<Appointments />
+					<AppointmentTooltip showOpenButton showDeleteButton />
+					<AppointmentForm />
 				</Scheduler>
 			</Paper>
-		</>
-	);
-};
+		);
+	}
+}
