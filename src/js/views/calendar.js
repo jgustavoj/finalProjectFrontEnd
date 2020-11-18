@@ -1,12 +1,13 @@
-import * as React from "react";
+import React, { useState, useContext } from "react";
 import Paper from "@material-ui/core/Paper";
 import { ViewState, EditingState } from "@devexpress/dx-react-scheduler";
+import { Context } from "../store/appContext";
 import {
 	Scheduler,
 	MonthView,
 	Toolbar,
 	// DateNavigator,
-	// TodayButton,
+	TodayButton,
 	Appointments,
 	AppointmentForm,
 	AppointmentTooltip,
@@ -17,40 +18,33 @@ import {
 	AllDayPanel,
 	ConfirmationDialog
 } from "@devexpress/dx-react-scheduler-material-ui";
-import { appointments } from "../store/appointments";
 
-export class Calendar extends React.PureComponent {
-	constructor(props) {
-		super(props);
-		this.state = {
-			data: appointments,
-			currentDate: "2018-06-27",
+export const Calendar = () => {
+	const [view, setView] = useState("Month");
+	const { store, actions } = useContext(Context);
+	const [state, setState] = useState({
+		data: store.appointments,
+		currentDate: "2018-06-27",
 
-			addedAppointment: {},
-			appointmentChanges: {},
-			editingAppointment: undefined
-		};
+		addedAppointment: {},
+		appointmentChanges: {},
+		editingAppointment: undefined
+	});
 
-		this.commitChanges = this.commitChanges.bind(this);
-		this.changeAddedAppointment = this.changeAddedAppointment.bind(this);
-		this.changeAppointmentChanges = this.changeAppointmentChanges.bind(this);
-		this.changeEditingAppointment = this.changeEditingAppointment.bind(this);
+	function changeAddedAppointment(addedAppointment) {
+		setState({ ...state, addedAppointment });
 	}
 
-	changeAddedAppointment(addedAppointment) {
-		this.setState({ addedAppointment });
+	function changeAppointmentChanges(appointmentChanges) {
+		setState({ ...state, appointmentChanges });
 	}
 
-	changeAppointmentChanges(appointmentChanges) {
-		this.setState({ appointmentChanges });
+	function changeEditingAppointment(editingAppointment) {
+		setState({ ...state, editingAppointment });
 	}
 
-	changeEditingAppointment(editingAppointment) {
-		this.setState({ editingAppointment });
-	}
-
-	commitChanges({ added, changed, deleted }) {
-		this.setState(state => {
+	function commitChanges({ added, changed, deleted }) {
+		setState(state => {
 			let { data } = state;
 			if (added) {
 				const startingAddedId = data.length > 0 ? data[data.length - 1].id + 1 : 0;
@@ -65,53 +59,39 @@ export class Calendar extends React.PureComponent {
 			if (deleted !== undefined) {
 				data = data.filter(appointment => appointment.id !== deleted);
 			}
-			return { data };
+			return { ...state, data };
 		});
 	}
 
-	render() {
-		const {
-			currentDate,
-			data,
-			addedAppointment,
-			appointmentChanges,
-			editingAppointment,
-			currentViewName
-		} = this.state;
+	const { currentDate, data, addedAppointment, appointmentChanges, editingAppointment, currentViewName } = state;
 
-		return (
-			<Paper>
-				<Scheduler data={data} height={820}>
-					<ViewState currentDate={currentDate} />
-					<EditingState
-						onCommitChanges={this.commitChanges}
-						addedAppointment={addedAppointment}
-						onAddedAppointmentChange={this.changeAddedAppointment}
-						appointmentChanges={appointmentChanges}
-						onAppointmentChangesChange={this.changeAppointmentChanges}
-						editingAppointment={editingAppointment}
-						onEditingAppointmentChange={this.changeEditingAppointment}
-					/>
-					<WeekView startDayHour={9} endDayHour={17} />
-					{/* <MonthView />
-                    <DayView /> */}
-					{/* <Toolbar /> */}
-					{/* <DateNavigator /> */}
-					{/* <TodayButton /> */}
-					<AllDayPanel />
-					<EditRecurrenceMenu />
-					<ConfirmationDialog />
-					<Appointments />
-					<AppointmentTooltip showOpenButton showDeleteButton />
-					<AppointmentForm />
-				</Scheduler>
-			</Paper>
-		);
-	}
-}
-
-// date navigation imports
-// MonthView,
-// Toolbar,
-// DateNavigator,
-// TodayButton,
+	return (
+		<Paper>
+			<Scheduler data={data} height={820}>
+				<ViewState currentDate={currentDate} currentViewName={view} onCurrentViewNameChange={setView} />
+				<EditingState
+					onCommitChanges={commitChanges}
+					addedAppointment={addedAppointment}
+					onAddedAppointmentChange={changeAddedAppointment}
+					appointmentChanges={appointmentChanges}
+					onAppointmentChangesChange={changeAppointmentChanges}
+					editingAppointment={editingAppointment}
+					onEditingAppointmentChange={changeEditingAppointment}
+				/>
+				<WeekView startDayHour={7} endDayHour={24} />
+				<MonthView />
+				<DayView />
+				<Toolbar />
+				{/* <DateNavigator /> */}
+				<TodayButton />
+				<AllDayPanel />
+				<ViewSwitcher />
+				<EditRecurrenceMenu />
+				<ConfirmationDialog />
+				<Appointments />
+				<AppointmentTooltip showOpenButton showDeleteButton />
+				<AppointmentForm />
+			</Scheduler>
+		</Paper>
+	);
+};

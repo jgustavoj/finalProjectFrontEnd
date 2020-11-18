@@ -1,3 +1,5 @@
+import { appointments } from "./appointments.js";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -10,6 +12,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					password: "123"
 				}
 			],
+			appointments: appointments,
 			currentUser: {
 				email: "",
 				token: null
