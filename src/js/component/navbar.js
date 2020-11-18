@@ -12,9 +12,9 @@ export const Navbar = () => {
 			<Link to="calendar">
 				<span className="navbar-brand mb-0 h1">Calendar</span>
 			</Link>
-			<Link to="/events">
+			{/* <Link to="/events">
 				<span className="navbar-brand mb-0 h1">Add New Event</span>
-			</Link>
+			</Link> */}
 			<div className="ml-auto">
 				<Link to="/login">
 					<button className="btn btn-light">Login</button>

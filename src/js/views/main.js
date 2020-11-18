@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Register } from "../component/register.js";
 import { Jumbotron } from "../component/jumbotron.js";
+import { Footer } from "../component/footer.js";
 import { About } from "../component/about.js";
 
 export const Main = () => {
+	const [key, setKey] = useState("login");
 	return (
 		<>
 			<Jumbotron />
@@ -18,7 +20,8 @@ export const Main = () => {
 						<i className="far fa-paper-plane fa-2x" />
 						<h2 id="sign-up">Sign up!</h2>
 					</div>
-					<Register />
+					<Register setTab={setKey} />
+					<Footer />
 				</div>
 			</div>
 		</>

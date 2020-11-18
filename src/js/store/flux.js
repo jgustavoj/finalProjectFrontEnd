@@ -49,15 +49,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const store = getStore();
 				// const found = store.users.find(element => element.email == email);
 				for (let x of store.users) {
-					if (x.email == email) {
+					if (x.email == email && x.password == password) {
 						setStore({
 							currentUser: {
 								email: email,
 								token: "lgfshalhfgsdkjgfhlksdfhglkdhfsl"
 							}
 						});
+						return true;
 					}
 				}
+				return false;
+			},
+			signUp: newUser => {
+				const store = getStore();
+				setStore({
+					users: [...store.users, newUser]
+				});
 			}
 		}
 	};

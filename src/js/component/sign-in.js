@@ -1,7 +1,21 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { Context } from "../store/appContext";
+import { getState } from "../store/flux";
 
 export const SignIn = () => {
+	const [password, setPassword] = useState("");
+	const [email, setEmail] = useState("");
+	const history = useHistory();
+	const { store, actions } = useContext(Context);
+	// const handleSubmit = e => {
+	// 	if (users.email == email.toLowerCase() && users.password == password) {
+	// 		return "/calendar";
+	// 	} else {
+	// 		alert("Incorrect Information, please try again.");
+	// 	}
+	// };
+
 	return (
 		<>
 			<div className="container">
@@ -13,26 +27,44 @@ export const SignIn = () => {
 								<form>
 									<div className="form-group row">
 										<div className="col">
-											<input type="text" className="form-control" placeholder="Email" />
+											<input
+												onChange={e => setEmail(e.target.value)}
+												type="text"
+												className="form-control"
+												placeholder="Email"
+												value={email}
+											/>
 										</div>
 									</div>
 									<div className="form-group row">
 										<div className="col-sm-10">
 											<input
+												onChange={e => setPassword(e.target.value)}
 												type="password"
 												className="form-control"
 												id="inputPassword3"
 												placeholder="Password"
+												value={password}
 											/>
 										</div>
 									</div>
-									<Link to="/calendar">
-										<div className="text-center">
-											<button type="button" className="btn btn-secondary text-center mb-3">
-												Sign In
-											</button>
-										</div>
-									</Link>
+									{/* <Link to={handleSubmit()}> */}
+									<div className="text-center">
+										<button
+											type="button"
+											className="btn btn-secondary text-center mb-3"
+											onClick={async e => {
+												let result = await actions.login(email, password);
+												if (result) {
+													history.push("/calendar");
+												} else {
+													alert("Please check your credentials and try again");
+												}
+											}}>
+											Sign In
+										</button>
+									</div>
+									{/* </Link> */}
 								</form>
 							</div>
 						</div>

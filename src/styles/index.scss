@@ -83,6 +83,7 @@ body {
 
 .account-tab{
   margin-top: 100px;
+  min-height: 80vh; 
 }
 
 .input-container{
@@ -110,4 +111,9 @@ body {
 
 .MuiPaper-elevation1 {
     margin-top:100px;
+}
+
+.footer-login{
+    position: absolute;
+    bottom: 0px;
 }
