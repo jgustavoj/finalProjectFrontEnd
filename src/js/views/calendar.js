@@ -19,19 +19,13 @@ import {
 	ConfirmationDialog
 } from "@devexpress/dx-react-scheduler-material-ui";
 
-// this.currentDateChange = (currentDate) => { this.setState({ currentDate }); };
-//   }
-
-//    currentDate={currentDate}
-//             onCurrentDateChange={this.currentDateChange}
-
 export const Calendar = () => {
 	const [view, setView] = useState("Week");
-	// const [dateView, setDateView] = useState("2018-06-27");
+	const [dateView, setDateView] = useState(new Date());
 	const { store, actions } = useContext(Context);
 	const [state, setState] = useState({
 		data: store.appointments,
-		currentDate: "2020-06-27",
+		currentDate: new Date(),
 
 		addedAppointment: {},
 		appointmentChanges: {},
@@ -76,11 +70,11 @@ export const Calendar = () => {
 		<Paper>
 			<Scheduler data={data} height={800}>
 				<ViewState
-					currentDate={currentDate}
+					// currentDate={currentDate}
 					currentViewName={view}
 					onCurrentViewNameChange={setView}
-					// currentDate={dateView}
-					//onCurrentDateChange={setDateView}
+					currentDate={dateView}
+					onCurrentDateChange={setDateView}
 				/>
 				<EditingState
 					onCommitChanges={commitChanges}
