@@ -70,7 +70,6 @@ export const Calendar = () => {
 		<Paper>
 			<Scheduler data={data} height={800}>
 				<ViewState
-					// currentDate={currentDate}
 					currentViewName={view}
 					onCurrentViewNameChange={setView}
 					currentDate={dateView}
