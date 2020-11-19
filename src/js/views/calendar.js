@@ -6,7 +6,7 @@ import {
 	Scheduler,
 	MonthView,
 	Toolbar,
-	// DateNavigator,
+	DateNavigator,
 	TodayButton,
 	Appointments,
 	AppointmentForm,
@@ -19,12 +19,19 @@ import {
 	ConfirmationDialog
 } from "@devexpress/dx-react-scheduler-material-ui";
 
+// this.currentDateChange = (currentDate) => { this.setState({ currentDate }); };
+//   }
+
+//    currentDate={currentDate}
+//             onCurrentDateChange={this.currentDateChange}
+
 export const Calendar = () => {
-	const [view, setView] = useState("Month");
+	const [view, setView] = useState("Week");
+	// const [dateView, setDateView] = useState("2018-06-27");
 	const { store, actions } = useContext(Context);
 	const [state, setState] = useState({
 		data: store.appointments,
-		currentDate: "2018-06-27",
+		currentDate: "2020-06-27",
 
 		addedAppointment: {},
 		appointmentChanges: {},
@@ -67,8 +74,14 @@ export const Calendar = () => {
 
 	return (
 		<Paper>
-			<Scheduler data={data} height={820}>
-				<ViewState currentDate={currentDate} currentViewName={view} onCurrentViewNameChange={setView} />
+			<Scheduler data={data} height={800}>
+				<ViewState
+					currentDate={currentDate}
+					currentViewName={view}
+					onCurrentViewNameChange={setView}
+					// currentDate={dateView}
+					//onCurrentDateChange={setDateView}
+				/>
 				<EditingState
 					onCommitChanges={commitChanges}
 					addedAppointment={addedAppointment}
@@ -82,7 +95,7 @@ export const Calendar = () => {
 				<MonthView />
 				<DayView />
 				<Toolbar />
-				{/* <DateNavigator /> */}
+				<DateNavigator />
 				<TodayButton />
 				<AllDayPanel />
 				<ViewSwitcher />

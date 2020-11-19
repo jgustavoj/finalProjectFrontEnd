@@ -1,11 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import logo from "../../img/logo.png";
 
 export const Navbar = () => {
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light fixed-top mb-20" id="mainNav">
 			<Link to="/">
-				<span className="navbar-brand mb-0 h1">Home</span>
+				<span className="navbar-brand mb-0 h1">
+					<img src={logo} height={45} width={45} />
+				</span>
 				{/* <span className="navbar-brand mb-0 h1">About</span>
 				<span className="navbar-brand mb-0 h1">How it works</span> */}
 			</Link>

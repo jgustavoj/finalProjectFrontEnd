@@ -18,7 +18,7 @@ export const About = () => {
 								message so YOU can help your child stay on top of their work. Whatever reminder and
 								schedule you need....
 							</p>
-							<h4 className="text-black mb-4">Dont worry we got a guy for that! </h4>
+							<h4 className="text-black mb-4">{"Don't"} worry we got a guy for that! </h4>
 						</div>
 					</div>
 					<img className="img-fluid" src={iphone2} height={350} width={300} />

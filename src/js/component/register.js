@@ -54,7 +54,7 @@ export const Register = ({ setTab }) => {
 								</div>
 							</div>
 							<div className="form-group row">
-								<div className="col-sm-10">
+								<div className="col">
 									<input
 										onChange={e => setUser({ ...user, phoneNumber: e.target.value })}
 										type="text"
@@ -66,7 +66,7 @@ export const Register = ({ setTab }) => {
 							</div>
 							<div className="form-group row">
 								{/* <label htmlFor="inputPassword3" className="col-md-0 col-form-label" /> */}
-								<div className="col-sm-10">
+								<div className="col">
 									<input
 										onChange={e => setUser({ ...user, password: e.target.value })}
 										type="password"
@@ -79,7 +79,7 @@ export const Register = ({ setTab }) => {
 							</div>
 							<div className="form-group row">
 								{/* <label htmlFor="inputPassword3" className="col-md-0 col-form-label" /> */}
-								<div className="col-sm-10">
+								<div className="col">
 									<input
 										type="password"
 										className="form-control"
