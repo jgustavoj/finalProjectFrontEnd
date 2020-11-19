@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Register } from "../component/register.js";
+//import { Register } from "../component/register.js";
 import { Jumbotron } from "../component/jumbotron.js";
 import { Footer } from "../component/footer.js";
 import { About } from "../component/about.js";
 import { Subscribe } from "../component/subscribe.js";
 
 export const Main = () => {
-	const [key, setKey] = useState("login");
+	//const [key, setKey] = useState("login");
 	return (
 		<>
 			<Jumbotron />
