@@ -1,8 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-// import { AccordionActions } from "@material-ui/core";
 import { Context } from "../store/appContext";
-// import { registerLocale } from "react-datepicker";
 import PropTypes from "prop-types";
 export const Register = ({ setTab }) => {
 	const [user, setUser] = useState({

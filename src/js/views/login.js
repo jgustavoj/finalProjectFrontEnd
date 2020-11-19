@@ -24,12 +24,12 @@ export const Login = () => {
 					id="uncontrolled-tab-example">
 					<Tab eventKey="login" title="Login">
 						<br />
-						<p className="text-center">Manage your account by logging in below!</p>
+						<h6 className="text-center">Manage your account by logging in below!</h6>
 						<SignIn />
 					</Tab>
 					<Tab eventKey="register" title="Register">
 						<br />
-						<p className="text-center">Create an account and meet our guy!</p>
+						<h6 className="text-center">Create an account and meet our guy!</h6>
 						<Register setTab={setKey} />
 					</Tab>
 				</Tabs>
