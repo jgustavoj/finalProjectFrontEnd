@@ -7,7 +7,7 @@ export const Navbar = () => {
 		<nav className="navbar navbar-expand-lg navbar-light fixed-top mb-20" id="mainNav">
 			<Link to="/">
 				<span className="navbar-brand mb-0 h1">
-					<img src={logo} height={45} width={45} />
+					<img src={logo} height={50} width={50} />
 				</span>
 				{/* <span className="navbar-brand mb-0 h1">About</span>
 				<span className="navbar-brand mb-0 h1">How it works</span> */}
