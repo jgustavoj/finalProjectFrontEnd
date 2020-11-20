@@ -1,8 +1,10 @@
 import { appointments } from "./appointments.js";
+import { bool } from "prop-types";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			loggedIn: false,
 			users: [
 				{
 					firstName: "Gustavo",
@@ -25,6 +27,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
+			setLoggedIn: bool => {
+				setStore({ loggedIn: bool });
+			},
+
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");

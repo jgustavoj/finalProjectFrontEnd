@@ -60,6 +60,7 @@ export const SignIn = () => {
 												} else {
 													alert("Please check your credentials and try again");
 												}
+												actions.setLoggedIn(true);
 											}}>
 											Sign In
 										</button>
@@ -75,3 +76,5 @@ export const SignIn = () => {
 		</>
 	);
 };
+// cant repeat duplicate props
+// onClick={() => actions.setLoggedIn(true)}
