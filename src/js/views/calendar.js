@@ -20,7 +20,7 @@ import {
 } from "@devexpress/dx-react-scheduler-material-ui";
 
 export const Calendar = () => {
-	const [view, setView] = useState("Week");
+	const [view, setView] = useState("Month");
 	const [dateView, setDateView] = useState(new Date());
 	const { store, actions } = useContext(Context);
 	const [state, setState] = useState({
