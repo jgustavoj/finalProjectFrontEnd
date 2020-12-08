@@ -36,15 +36,15 @@ export const Navbar = () => {
 					<img src={logo} height={50} width={50} />
 				</span>
 			</Link>
-			{/* <span className="navbar-brand mb-0 h1">About</span>
-				<span className="navbar-brand mb-0 h1">How it works</span> */}
 
-			<Link to="calendar">
-				<button className="btn btn-light m-auto mb-0 h1">Calendar</button>
-			</Link>
-			{/* <Link to="/events">
-				<span className="navbar-brand mb-0 h1">Add New Event</span>
-			</Link> */}
+			<div className="float-left">
+				{store.loggedIn && (
+					<Link to="calendar">
+						<button className="btn btn-light m-auto mb-0 h1">Calendar</button>
+					</Link>
+				)}
+			</div>
+
 			<div className="ml-auto" />
 			<div className="float-right">
 				{store.loggedIn ? (
@@ -67,3 +67,14 @@ export const Navbar = () => {
 //bd-navbar flex-md-row flex-column
 
 //navbar-brand mb-0 h1
+
+{
+	/* <Link to="/events">
+				<span className="navbar-brand mb-0 h1">Add New Event</span>
+            </Link> */
+}
+
+{
+	/* <span className="navbar-brand mb-0 h1">About</span>
+<span className="navbar-brand mb-0 h1">How it works</span> */
+}
