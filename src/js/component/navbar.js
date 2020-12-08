@@ -39,9 +39,9 @@ export const Navbar = () => {
 			{/* <span className="navbar-brand mb-0 h1">About</span>
 				<span className="navbar-brand mb-0 h1">How it works</span> */}
 
-			{/* <Link to="calendar">
-				<span className="navbar-brand mb-0 h1">Calendar</span>
-			</Link> */}
+			<Link to="calendar">
+				<button className="btn btn-light m-auto mb-0 h1">Calendar</button>
+			</Link>
 			{/* <Link to="/events">
 				<span className="navbar-brand mb-0 h1">Add New Event</span>
 			</Link> */}
