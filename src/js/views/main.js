@@ -23,34 +23,3 @@ export const Main = () => {
 		</>
 	);
 };
-
-/* // import rigoImage from "../../img/rigo-baby.jpg";
-//<p>
-//<img src=rigoImage />
-//</p> */
-
-//{
-/* <form>
-				<div className="row">
-					<div className="col">
-						<input type="text" className="form-control" placeholder="First name" />
-					</div>
-					<div className="col">
-						<input type="text" className="form-control" placeholder="Last name" />
-					</div>
-				</div>
-
-				<div className="form-group row">
-					<label htmlFor="inputEmail3" />
-					<div className="form-group col-md-6">
-						<input type="email" className="form-control" id="inputEmail3" placeholder="Email" />
-					</div>
-				</div>
-				<div className="form-group row">
-					<label htmlFor="inputPassword4" />
-					<div className="form-group col-md-6">
-						<input type="password" className="form-control" id="inputPassword4" placeholder="Password" />
-					</div>
-				</div>
-			</form> */
-// }
