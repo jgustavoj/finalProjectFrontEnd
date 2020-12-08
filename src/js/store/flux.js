@@ -9,9 +9,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				{
 					firstName: "Gustavo",
 					lastName: "Jimenez",
-					email: "jimenezgustavoandres@gmail.com",
+					email: "jime@gmail.com",
 					phoneNumber: "3057984105",
-					password: "123"
+					password: "123456789"
 				}
 			],
 			appointments: appointments,

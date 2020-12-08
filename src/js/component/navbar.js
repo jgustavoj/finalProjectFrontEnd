@@ -68,13 +68,13 @@ export const Navbar = () => {
 
 //navbar-brand mb-0 h1
 
-{
-	/* <Link to="/events">
-				<span className="navbar-brand mb-0 h1">Add New Event</span>
-            </Link> */
-}
+// {
+// 	/* <Link to="/events">
+// 				<span className="navbar-brand mb-0 h1">Add New Event</span>
+//             </Link> */
+// }
 
-{
-	/* <span className="navbar-brand mb-0 h1">About</span>
-<span className="navbar-brand mb-0 h1">How it works</span> */
-}
+// {
+// 	/* <span className="navbar-brand mb-0 h1">About</span>
+// <span className="navbar-brand mb-0 h1">How it works</span> */
+// }
