@@ -11,7 +11,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					lastName: "Jimenez",
 					email: "jime@gmail.com",
 					phoneNumber: "3057984105",
-					password: "123456789"
+					password: "123456"
 				}
 			],
 			appointments: appointments,
