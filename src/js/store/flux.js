@@ -27,6 +27,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
+			setNewAppointment: (title, startDate, endDate, location) => {
+				fetch("https://3000-cb07268f-0f24-494f-92c2-9b6b1a0b1dfb.ws-us03.gitpod.io/appointments"),
+					{
+						method: "POST",
+						headers: { "Content-Type": "application/json" },
+						body: JSON.stringify({
+							title: title,
+							startDate: startDate.toISOString(),
+							endDate: endDate.toISOString(),
+							location: location
+						})
+					};
+			},
 			setLoggedIn: bool => {
 				setStore({ loggedIn: bool });
 			},
