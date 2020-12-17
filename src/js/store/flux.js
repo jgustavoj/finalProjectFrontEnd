@@ -1,6 +1,6 @@
 import { appointments } from "./appointments.js";
 import { bool } from "prop-types";
-const url = "https://3000-c1d777e6-ff85-463a-b85e-6a74ebab16d8.ws-us03.gitpod.io/";
+const url = "https://3000-a1007fd4-1ba0-4ea4-a40d-d94e9227503b.ws-us03.gitpod.io/";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
@@ -15,14 +15,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					password: "123456"
 				}
 			],
-			appointments: appointments,
+			appointments: [],
 			currentUser: {
 				email: "",
 				token: null
 			}
 		},
 		actions: {
-            getAllTheAppointmentsFromBackend: () => {
+			getAllTheAppointmentsFromBackend: () => {
 				fetch(`${url}appointments`)
 					.then(response => response.json())
 					.then(data => {
@@ -30,7 +30,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ appointments: data });
 					});
 			},
-				handleAppointments: (param, param2) => {
+			handleAppointments: (param, param2) => {
 				if (param == "added") {
 					console.log("param2: ", param2);
 					fetch(`${url}appointments`, {
