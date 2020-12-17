@@ -40,7 +40,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 							title: param2.title,
 							startDate: param2.startDate.toISOString().replace("Z", ""),
 							endDate: param2.endDate.toISOString().replace("Z", ""),
-							location: param2.notes
+							location: param2.title
 						})
 					}).then(() => {
 						fetch(`${url}appointments`)
