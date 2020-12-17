@@ -1,5 +1,6 @@
 import { appointments } from "./appointments.js";
 import { bool } from "prop-types";
+const url = "https://3000-c1d777e6-ff85-463a-b85e-6a74ebab16d8.ws-us03.gitpod.io/";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
@@ -18,27 +19,38 @@ const getState = ({ getStore, getActions, setStore }) => {
 			currentUser: {
 				email: "",
 				token: null
-			},
-			events: [
-				{ startDate: "2020-11-12T09:45", title: "Meeting" },
-				{ startDate: "2020-11-13T12:00", title: "Go to a gym" },
-				{ startDate: "2020-11-14T13:00", title: "Groceries" },
-				{ startDate: "2020-11-11T15:00", title: "Run" }
-			]
+			}
 		},
 		actions: {
-			setNewAppointment: (title, startDate, endDate, location) => {
-				fetch("https://3000-cb07268f-0f24-494f-92c2-9b6b1a0b1dfb.ws-us03.gitpod.io/appointments"),
-					{
+            getAllTheAppointmentsFromBackend: () => {
+				fetch(`${url}appointments`)
+					.then(response => response.json())
+					.then(data => {
+						console.log("Fetched again", data);
+						setStore({ appointments: data });
+					});
+			},
+				handleAppointments: (param, param2) => {
+				if (param == "added") {
+					console.log("param2: ", param2);
+					fetch(`${url}appointments`, {
 						method: "POST",
 						headers: { "Content-Type": "application/json" },
 						body: JSON.stringify({
-							title: title,
-							startDate: startDate.toISOString(),
-							endDate: endDate.toISOString(),
-							location: location
+							title: param2.title,
+							startDate: param2.startDate.toISOString().replace("Z", ""),
+							endDate: param2.endDate.toISOString().replace("Z", ""),
+							location: param2.notes
 						})
-					};
+					}).then(() => {
+						fetch(`${url}appointments`)
+							.then(response => response.json())
+							.then(data => {
+								console.log("Fetched again", data);
+								setStore({ appointments: data });
+							});
+					});
+				}
 			},
 			setLoggedIn: bool => {
 				setStore({ loggedIn: bool });
