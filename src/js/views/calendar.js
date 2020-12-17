@@ -48,16 +48,20 @@ export const Calendar = () => {
 		setState(state => {
 			let { data } = state;
 			if (added) {
+                actions.handleAppointments("added", added);
 				const startingAddedId = data.length > 0 ? data[data.length - 1].id + 1 : 0;
 				data = [...data, { id: startingAddedId, ...added }];
 			}
 			if (changed) {
+                actions.handleAppointments("changed", changed);
 				data = data.map(
 					appointment =>
 						changed[appointment.id] ? { ...appointment, ...changed[appointment.id] } : appointment
 				);
 			}
 			if (deleted !== undefined) {
+                actions.handleAppointments("deleted", delted);
+
 				data = data.filter(appointment => appointment.id !== deleted);
 			}
 			return { ...state, data };
