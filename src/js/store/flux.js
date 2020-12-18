@@ -26,11 +26,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch(`${url}appointments`)
 					.then(response => response.json())
 					.then(data => {
-						console.log("Fetched again", data);
+						console.log("Fetched", data);
 						setStore({ appointments: data });
 					});
 			},
-			handleAppointments: (param, param2) => {
+			handleAppointment: (param, param2) => {
 				if (param == "added") {
 					console.log("param2: ", param2);
 					fetch(`${url}appointments`, {
@@ -46,11 +46,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 						fetch(`${url}appointments`)
 							.then(response => response.json())
 							.then(data => {
-								console.log("Fetched again", data);
+								console.log("Created", data);
 								setStore({ appointments: data });
 							});
 					});
 				}
+			},
+			handleAppointmentUpdate: (title, startDate, endDate, id) => {
+				/*if (param == "changed") { 
+					console.log("Updated!", param3);*/
+				fetch(`${url}` + id, {
+					method: "PUT",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({
+						title: title,
+						startDate: startDate /*.toISOString().replace("Z", ""*/,
+						endDate: endDate /*.toISOString().replace("Z", "")*/,
+						location: title,
+						id: id
+					})
+				}).then(() => {
+					fetch(`${url}appointments`)
+						.then(response => response.json())
+						.then(data => {
+							console.log("Updated", data);
+							setStore({ appointments: data });
+						});
+				});
+				//}
 			},
 			setLoggedIn: bool => {
 				setStore({ loggedIn: bool });
