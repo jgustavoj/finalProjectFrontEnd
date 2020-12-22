@@ -22,6 +22,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			}
 		},
 		actions: {
+            //this functions GETS all the appointments from the backend listed in the calendar
 			getAllTheAppointmentsFromBackend: () => {
 				fetch(`${url}appointments`)
 					.then(response => response.json())
@@ -29,7 +30,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log("Fetched", data);
 						setStore({ appointments: data });
 					});
-			},
+            },
+            //this function adds appointments to the backend from the calendar
 			handleAppointment: (param, param2) => {
 				if (param == "added") {
 					console.log("param2: ", param2);
@@ -51,7 +53,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 							});
 					});
 				}
-			},
+            },
+            //this function updates any edits on the backend from calendar 
 			handleAppointmentUpdate: (title, startDate, endDate, id) => {
 				/*if (param == "changed") { 
 					console.log("Updated!", param3);*/
