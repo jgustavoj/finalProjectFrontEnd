@@ -53,14 +53,14 @@ export const Calendar = () => {
 				data = [...data, { id: startingAddedId, ...added }];
 			}
 			if (changed) {
-				actions.handleAppointmentUpdate("changed", changed);
+				actions.handleAppointment("changed", changed);
 				data = data.map(
 					appointment =>
 						changed[appointment.id] ? { ...appointment, ...changed[appointment.id] } : appointment
 				);
 			}
 			if (deleted !== undefined) {
-				actions.handleAppointments("deleted", deleted);
+				actions.handleAppointment("deleted", deleted);
 
 				data = data.filter(appointment => appointment.id !== deleted);
 			}
