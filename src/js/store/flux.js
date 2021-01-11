@@ -32,7 +32,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			//this function adds appointments to the backend from the calendar
-			handleAppointment: (param, param2) => {
+			handleAppointment: (param, param2, id) => {
 				if (param == "added") {
 					console.log("param2: ", param2);
 					fetch(`${url}appointments`, {
@@ -54,8 +54,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 				}
 				if (param == "changed") {
-					console.log("param2: ", param2);
-					// fetch(`${url}appointments`, { ---> WE NEED TO ADD ID!
+					// fetch(`${url}appointments${id}`, {
 					// 	method: "PUT",
 					// 	headers: { "Content-Type": "application/json" },
 					// 	body: JSON.stringify({

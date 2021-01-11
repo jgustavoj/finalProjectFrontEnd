@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Paper from "@material-ui/core/Paper";
 import { ViewState, EditingState } from "@devexpress/dx-react-scheduler";
 import { Context } from "../store/appContext";
@@ -32,6 +32,17 @@ export const Calendar = () => {
 		editingAppointment: undefined
 	});
 
+	useEffect(
+		() => {
+			// Update the document title using the browser API
+			const test = async () => {
+				setState({ ...state, data: store.appointments });
+			};
+			test();
+		},
+		[store.appointments]
+	);
+
 	function changeAddedAppointment(addedAppointment) {
 		setState({ ...state, addedAppointment });
 	}
@@ -53,11 +64,13 @@ export const Calendar = () => {
 				data = [...data, { id: startingAddedId, ...added }];
 			}
 			if (changed) {
-				actions.handleAppointment("changed", changed);
 				data = data.map(
 					appointment =>
-						changed[appointment.id] ? { ...appointment, ...changed[appointment.id] } : appointment
+						// changed[appointment.id] ? { ...appointment, ...changed[appointment.id] } : appointment
+						changed[appointment.id] && actions.handleAppointment("changed", changed, appointment.id)
+					// console.log("DATA: ", appointment)
 				);
+				// actions.handleAppointment("changed", changed, changed.id);
 			}
 			if (deleted !== undefined) {
 				actions.handleAppointment("deleted", deleted);
