@@ -54,13 +54,13 @@ export const SignIn = () => {
 											type="button"
 											className="btn btn-secondary text-center mb-3"
 											onClick={async e => {
-												let result = await actions.login(email, password);
-												if (result) {
-													history.push("/calendar");
-												} else {
-													alert("Please check your credentials and try again");
-												}
-												actions.setLoggedIn(true);
+												actions.login(email, password);
+												// if (result) {
+												// 	history.push("/calendar");
+												// } else {
+												// 	alert("Please check your credentials and try again");
+												// }
+												// actions.setLoggedIn(true);
 											}}>
 											Sign In
 										</button>

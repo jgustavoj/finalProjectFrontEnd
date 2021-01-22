@@ -127,19 +127,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			login: (email, password) => {
 				const store = getStore();
-				// const found = store.users.find(element => element.email == email);
-				for (let x of store.users) {
-					if (x.email == email && x.password == password) {
-						setStore({
-							currentUser: {
-								email: email,
-								token: "lgfshalhfgsdkjgfhlksdfhglkdhfsl"
-							}
-						});
-						return true;
-					}
-				}
-				return false;
+				fetch(`${url}login`, {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({
+						email: email,
+						password: password
+					})
+				})
+					.then(response => response.json())
+					.then(data => {
+						console.log("Created", data);
+						setStore({ token: data.access_token });
+					});
 			},
 			signUp: newUser => {
 				const store = getStore();
