@@ -8,13 +8,6 @@ export const SignIn = () => {
 	const [email, setEmail] = useState("");
 	const history = useHistory();
 	const { store, actions } = useContext(Context);
-	// const handleSubmit = e => {
-	// 	if (users.email == email.toLowerCase() && users.password == password) {
-	// 		return "/calendar";
-	// 	} else {
-	// 		alert("Incorrect Information, please try again.");
-	// 	}
-	// };
 
 	return (
 		<>
@@ -48,7 +41,6 @@ export const SignIn = () => {
 											/>
 										</div>
 									</div>
-									{/* <Link to={handleSubmit()}> */}
 									<div className="text-center">
 										<button
 											type="button"
@@ -65,7 +57,6 @@ export const SignIn = () => {
 											Sign In
 										</button>
 									</div>
-									{/* </Link> */}
 								</form>
 							</div>
 						</div>

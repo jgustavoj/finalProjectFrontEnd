@@ -15,7 +15,7 @@ export const Login = () => {
 			<div className="account-tab">
 				<Tabs
 					onSelect={k => {
-						// console.log(k);
+						//console.log(k);
 						setKey(k);
 					}}
 					className="justify-content-center"

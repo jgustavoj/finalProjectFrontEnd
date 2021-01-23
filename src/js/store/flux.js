@@ -22,7 +22,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			}
 		},
 		actions: {
-			//this functions GETS all the appointments from the backend listed in the calendar
+			// GETS all the appointments from the backend listed in the calendar
 			getAllTheAppointmentsFromBackend: () => {
 				fetch(`${url}appointments`)
 					.then(response => response.json())
@@ -31,7 +31,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ appointments: data });
 					});
 			},
-			//this function adds appointments to the backend from the calendar
+			// adds appointments to the backend from the calendar
 			handleAppointment: (param, param2, id) => {
 				if (param == "added") {
 					console.log("param2: ", param2);
@@ -125,6 +125,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//reset the global store
 				setStore({ demo: demo });
 			},
+
 			login: (email, password) => {
 				const store = getStore();
 				fetch(`${url}login`, {
@@ -141,6 +142,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ token: data.access_token });
 					});
 			},
+			// login: (email, password) => { //this function simulates a login functionality thats front-end only, good for testing
+			// 	const store = getStore();
+			// 	// const found = store.users.find(element => element.email == email);
+			// 	for (let x of store.users) {
+			// 		if (x.email == email && x.password == password) {
+			// 			setStore({
+			// 				currentUser: {
+			// 					email: email,
+			// 					token: "lgfshalhfgsdkjgfhlksdfhglkdhfsl"
+			// 				}
+			// 			});
+			// 			return true;
+			// 		}
+			// 	}
+			// 	return false;
+			// },
 			signUp: newUser => {
 				const store = getStore();
 				setStore({

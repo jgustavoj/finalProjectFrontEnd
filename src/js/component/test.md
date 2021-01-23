@@ -1,5 +1,9 @@
-// Previous Register and Login pill
 
+
+Previous Register and Login pill
+
+
+``` js
 // const [logging, setLogging] = useState("");
 // <div className="row justify-content-center no-gutters">
 // 				<div className="col-lg-4" />
@@ -203,3 +207,5 @@ export const Calendar = () => {
 		</>
 	);
 };
+
+```

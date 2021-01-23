@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
+
 export const Register = ({ setTab }) => {
 	const [user, setUser] = useState({
 		firstName: "",
@@ -63,7 +64,6 @@ export const Register = ({ setTab }) => {
 								</div>
 							</div>
 							<div className="form-group row">
-								{/* <label htmlFor="inputPassword3" className="col-md-0 col-form-label" /> */}
 								<div className="col">
 									<input
 										onChange={e => setUser({ ...user, password: e.target.value })}
@@ -76,7 +76,6 @@ export const Register = ({ setTab }) => {
 								</div>
 							</div>
 							<div className="form-group row">
-								{/* <label htmlFor="inputPassword3" className="col-md-0 col-form-label" /> */}
 								<div className="col">
 									<input
 										type="password"
