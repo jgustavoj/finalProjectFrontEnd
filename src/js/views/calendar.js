@@ -26,7 +26,6 @@ export const Calendar = () => {
 	const [state, setState] = useState({
 		data: store.appointments,
 		currentDate: new Date(),
-
 		addedAppointment: {},
 		appointmentChanges: {},
 		editingAppointment: undefined
@@ -85,10 +84,10 @@ export const Calendar = () => {
 
 	return (
 		<Paper>
-			<Scheduler data={data} height={800}>
+			<Scheduler data={data} height={700}>
 				<ViewState
 					currentViewName={view}
-					onCurrentViewNameChange={setView}
+					onCurrentViewNameChange={setView} //changes the current view to whatever date the user chooses
 					currentDate={dateView}
 					onCurrentDateChange={setDateView}
 				/>
@@ -104,16 +103,16 @@ export const Calendar = () => {
 				<WeekView startDayHour={7} endDayHour={24} />
 				<MonthView />
 				<DayView />
-				<Toolbar />
-				<DateNavigator />
-				<TodayButton />
 				<AllDayPanel />
-				<ViewSwitcher />
 				<EditRecurrenceMenu />
 				<ConfirmationDialog />
 				<Appointments />
 				<AppointmentTooltip showOpenButton showDeleteButton />
 				<AppointmentForm />
+				<Toolbar />
+				<DateNavigator />
+				<TodayButton />
+				<ViewSwitcher />
 			</Scheduler>
 		</Paper>
 	);
