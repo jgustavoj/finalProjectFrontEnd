@@ -8,11 +8,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			loggedIn: false,
 			users: [
 				{
-					firstName: "Gustavo",
-					lastName: "Jimenez",
-					email: "jime@gmail.com",
-					phoneNumber: "3057984105",
-					password: "123456"
+					firstName: "test",
+					lastName: "test",
+					email: "test",
+					phoneNumber: "000",
+					password: "123"
 				}
 			],
 			appointments: [],
