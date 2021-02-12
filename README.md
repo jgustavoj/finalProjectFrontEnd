@@ -23,7 +23,7 @@
 
 
 
-### Requirements to install project:
+## Requirements to install project:
 
 - Make sure you are using node version 10
 
