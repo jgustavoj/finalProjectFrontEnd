@@ -9,7 +9,8 @@
 
  **Live Source Coming Soon** :raised_hands:
 
-Technologies           
+## Technologies
+
   * React
   * Python
   * Flask
@@ -22,7 +23,7 @@ Technologies
 
 
 
-### Requirements to install and view this project:
+### Requirements to install project:
 
 - Make sure you are using node version 10
 
