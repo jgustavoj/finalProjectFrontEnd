@@ -17,7 +17,7 @@
   * SQLAlchemy
   * Bootstrap
   * Scss  
-  * Source
+  
 
 <img src="https://github.com/jgustavoj/portfolio-v1/blob/master/images/project-1/the-schedule-guy-fullscreen.png" />
 
