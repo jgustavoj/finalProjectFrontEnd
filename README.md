@@ -22,7 +22,7 @@
 <img src="https://github.com/jgustavoj/portfolio-v1/blob/master/images/project-1/the-schedule-guy-fullscreen.png" />
 
 
-## Back_End Repository
+## Backend Repository
 
 [The Schedule Guy Backend](https://github.com/jgustavoj/flask-thescheduleguy-backend-project)
 
