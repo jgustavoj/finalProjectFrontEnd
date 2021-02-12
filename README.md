@@ -7,7 +7,7 @@
 <p> The schedule guy is a full-stack interactive web application that allows users to input personal events into a seamless and familiar calendar and it will notify you of those upcoming events via SMS. The application features JWT login-authentication and Twilio messaging support in the Back-End </p>
 
 
-Technologies          _Live Source Coming Soon_            
+Technologies         >>>>>>>> **Live Source Coming Soon**          
   * React
   * Python
   * Flask
