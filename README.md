@@ -4,7 +4,7 @@
 <p align="center">
 <a href="https://www.loom.com/share/f37c6838b3f1496c95111e515e83dd9b"><img src="" /></a>
 </p>
-
+![alt text](https://github.com/jgustavoj/portfolio-v1/blob/master/images/project-1/the-schedule-guy.png)
 
 
 
@@ -12,7 +12,7 @@
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io#https://github.com/4GeeksAcademy/react-hello-webapp.git)
 
-### Requirements:
+### Requirements to install and view this project:
 - Make sure you are using node version 10
 
 1. Install the packages:
