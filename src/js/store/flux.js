@@ -8,11 +8,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			loggedIn: false,
 			users: [
 				{
-					firstName: "test",
-					lastName: "test",
-					email: "test",
-					phoneNumber: "000",
-					password: "123"
+					// firstName: "test",
+					// lastName: "test",
+					// email: "test",
+					// phoneNumber: "000",
+					// password: "123"
 				}
 			],
 			appointments: [],
@@ -158,11 +158,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// 	}
 			// 	return false;
 			// },
-			signUp: newUser => {
-				const store = getStore();
-				setStore({
-					users: [...store.users, newUser]
-				});
+			// signUp: newUser => {
+			// 	const store = getStore();
+			// 	setStore({
+			// 		users: [...store.users, newUser]
+			// 	});
+			// }
+			signUp: (firstName, lastName, email, phoneNumber, password) => {
+				// const store = getStore();
+				fetch(`${url}user`, {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({
+						first_name: firstName,
+						last_name: lastName,
+						email: email,
+						phone_number: phoneNumber,
+						password: password
+					})
+				})
+					.then(response => response.json())
+					.then(data => {
+						console.log("Created", data);
+						setStore({ users: data });
+					});
 			}
 		}
 	};

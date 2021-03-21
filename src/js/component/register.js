@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 export const Register = ({ setTab }) => {
 	const [user, setUser] = useState({
 		firstName: "",
-		LastName: "",
+		lastName: "",
 		email: "",
 		phoneNumber: "",
 		password: ""
@@ -33,11 +33,11 @@ export const Register = ({ setTab }) => {
 							<div className="form-group row">
 								<div className="col">
 									<input
-										onChange={e => setUser({ ...user, LastName: e.target.value })}
+										onChange={e => setUser({ ...user, lastName: e.target.value })}
 										type="text"
 										className="form-control"
 										placeholder="Last Name"
-										value={user.LastName}
+										value={user.lastName}
 									/>
 								</div>
 							</div>
@@ -90,10 +90,16 @@ export const Register = ({ setTab }) => {
 									type="button"
 									className="btn btn-secondary text-center mb-3"
 									onClick={e => {
-										actions.signUp(user);
+										actions.signUp(
+											user.firstName,
+											user.lastName,
+											user.email,
+											user.phoneNumber,
+											user.password
+										);
 										setUser({
 											firstName: "",
-											LastName: "",
+											lastName: "",
 											email: "",
 											phoneNumber: "",
 											password: ""

@@ -47,12 +47,12 @@ export const SignIn = () => {
 											className="btn btn-secondary text-center mb-3"
 											onClick={async e => {
 												actions.login(email, password);
-												// if (result) {
-												// 	history.push("/calendar");
-												// } else {
-												// 	alert("Please check your credentials and try again");
-												// }
-												// actions.setLoggedIn(true);
+												if (result) {
+													history.push("/calendar");
+												} else {
+													alert("Please check your credentials and try again");
+												}
+												actions.setLoggedIn(true);
 											}}>
 											Sign In
 										</button>
