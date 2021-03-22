@@ -45,15 +45,16 @@ export const SignIn = () => {
 										<button
 											type="button"
 											className="btn btn-secondary text-center mb-3"
-											onClick={async e => {
-												actions.login(email, password);
-												if (result) {
-													history.push("/calendar");
-												} else {
-													alert("Please check your credentials and try again");
-												}
-												actions.setLoggedIn(true);
-											}}>
+											onClick={() => actions.login(email, password, history)}>
+											{/*                                             
+                                            {async e => {
+											// 	actions.login(email, password);
+											// 	// if (store.currentUser.token != null) {
+											// 	// 	history.push("/calendar") && actions.setLoggedIn(true);
+											// 	// } else {
+											// 	// 	alert("Please check your credentials and try again");
+											// 	// }
+											// }}> */}
 											Sign In
 										</button>
 									</div>

@@ -31,16 +31,16 @@ export const Calendar = () => {
 		editingAppointment: undefined
 	});
 
-	useEffect(
-		() => {
-			// Update the document title using the browser API
-			const test = async () => {
-				setState({ ...state, data: store.appointments });
-			};
-			test();
-		},
-		[store.appointments]
-	);
+	// useEffect(
+	// 	() => {
+	// 		// Update the document title using the browser API
+	// 		const test = async () => {
+	// 			setState({ ...state, data: store.appointments });
+	// 		};
+	// 		test();
+	// 	},
+	// 	[store.appointments]
+	// );
 
 	function changeAddedAppointment(addedAppointment) {
 		setState({ ...state, addedAppointment });
@@ -62,15 +62,15 @@ export const Calendar = () => {
 				const startingAddedId = data.length > 0 ? data[data.length - 1].id + 1 : 0;
 				data = [...data, { id: startingAddedId, ...added }];
 			}
-			if (changed) {
-				data = data.map(
-					appointment =>
-						// changed[appointment.id] ? { ...appointment, ...changed[appointment.id] } : appointment
-						changed[appointment.id] && actions.handleAppointment("changed", changed, appointment.id)
-					// console.log("DATA: ", appointment)
-				);
-				// actions.handleAppointment("changed", changed, changed.id);
-			}
+			// if (changed) {
+			// 	data = data.map(
+			// 		appointment =>
+			// 			// changed[appointment.id] ? { ...appointment, ...changed[appointment.id] } : appointment
+			// 			changed[appointment.id] && actions.handleAppointment("changed", changed, appointment.id)
+			// 		// console.log("DATA: ", appointment)
+			// 	);
+			// 	// actions.handleAppointment("changed", changed, changed.id);
+			// }
 			if (deleted !== undefined) {
 				actions.handleAppointment("deleted", deleted);
 

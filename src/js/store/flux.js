@@ -6,38 +6,39 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			loggedIn: false,
-			users: [
-				{
-					// firstName: "test",
-					// lastName: "test",
-					// email: "test",
-					// phoneNumber: "000",
-					// password: "123"
-				}
-			],
+			users: [{}],
 			appointments: [],
-			currentUser: {
-				email: "",
-				token: null
-			}
+			currentUser: {},
+			token: null
 		},
 		actions: {
 			// GETS all the appointments from the backend listed in the calendar
-			getAllTheAppointmentsFromBackend: () => {
-				fetch(`${url}appointments`)
+			getAllTheAppointmentsFromBackend: async () => {
+				const store = getStore();
+				await fetch(`${url}appointments`, {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `Bearer ${store.token}`
+					}
+				})
 					.then(response => response.json())
 					.then(data => {
-						console.log("Fetched", data);
+						console.log("Fetched user appointments", data);
 						setStore({ appointments: data });
 					});
 			},
 			// adds appointments to the backend from the calendar
 			handleAppointment: (param, param2, id) => {
+				const store = getStore();
 				if (param == "added") {
 					console.log("param2: ", param2);
 					fetch(`${url}appointments`, {
 						method: "POST",
-						headers: { "Content-Type": "application/json" },
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: `Bearer ${store.token}`
+						},
 						body: JSON.stringify({
 							title: param2.title,
 							startDate: param2.startDate.toISOString().replace("Z", ""),
@@ -126,11 +127,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ demo: demo });
 			},
 
-			login: (email, password) => {
-				const store = getStore();
-				fetch(`${url}login`, {
+			login: async (email, password, history) => {
+				await fetch(`${url}login`, {
 					method: "POST",
-					headers: { "Content-Type": "application/json" },
+					headers: {
+						"Content-Type": "application/json"
+					},
 					body: JSON.stringify({
 						email: email,
 						password: password
@@ -138,35 +140,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					.then(response => response.json())
 					.then(data => {
-						console.log("Created", data);
-						setStore({ token: data.access_token });
+						console.log("Token Created", data);
+						setStore({
+							token: data.access_token,
+							currentUser: data.user_info
+						});
 					});
+				history.push("/calendar");
 			},
-			// login: (email, password) => { //this function simulates a login functionality thats front-end only, good for testing
-			// 	const store = getStore();
-			// 	// const found = store.users.find(element => element.email == email);
-			// 	for (let x of store.users) {
-			// 		if (x.email == email && x.password == password) {
-			// 			setStore({
-			// 				currentUser: {
-			// 					email: email,
-			// 					token: "lgfshalhfgsdkjgfhlksdfhglkdhfsl"
-			// 				}
-			// 			});
-			// 			return true;
-			// 		}
-			// 	}
-			// 	return false;
-			// },
-			// signUp: newUser => {
-			// 	const store = getStore();
-			// 	setStore({
-			// 		users: [...store.users, newUser]
-			// 	});
-			// }
-			signUp: (firstName, lastName, email, phoneNumber, password) => {
-				// const store = getStore();
-				fetch(`${url}user`, {
+
+			signUp: async (firstName, lastName, email, phoneNumber, password) => {
+				let response = await fetch(`${url}user`, {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify({
@@ -176,15 +160,45 @@ const getState = ({ getStore, getActions, setStore }) => {
 						phone_number: phoneNumber,
 						password: password
 					})
-				})
-					.then(response => response.json())
-					.then(data => {
-						console.log("Created", data);
-						setStore({ users: data });
-					});
+				});
+				//  let results = await response.json();
+				//  if (response.ok){
+				//  return true
+				//  } else  {
+				//  return false
+				// }
+				//
+				// .then(response => response.json())
+				// .then(data => {
+				// 	console.log("User Created", data);
+				// 	setStore({ users: data });
+				// });
 			}
 		}
 	};
 };
 
 export default getState;
+
+// login: (email, password) => { //this function simulates a login functionality thats front-end only, good for testing
+// 	const store = getStore();
+// 	// const found = store.users.find(element => element.email == email);
+// 	for (let x of store.users) {
+// 		if (x.email == email && x.password == password) {
+// 			setStore({
+// 				currentUser: {
+// 					email: email,
+// 					token: "lgfshalhfgsdkjgfhlksdfhglkdhfsl"
+// 				}
+// 			});
+// 			return true;
+// 		}
+// 	}
+// 	return false;
+// },
+// signUp: newUser => {
+// 	const store = getStore();
+// 	setStore({
+// 		users: [...store.users, newUser]
+// 	});
+// }
