@@ -139,18 +139,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				})
 					.then(response => response.json())
-					.then(data => {
-						console.log("Token Created", data);
-						setStore({
-							token: data.access_token,
-							currentUser: data.user_info
-						});
+					.then(token => {
+						console.log("Token Created", token);
+						if (typeof token.msg != "undefined") {
+							//Notify.error(token.msg)
+						} else {
+							setStore({
+								token: token
+								// currentUser: data.user_info
+							});
+						}
 					});
-				history.push("/calendar");
+				// history.push("/calendar");
 			},
 
 			signUp: async (firstName, lastName, email, phoneNumber, password) => {
-				let response = await fetch(`${url}user`, {
+				await fetch(`${url}user`, {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify({
