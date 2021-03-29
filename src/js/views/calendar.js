@@ -86,13 +86,13 @@ export const Calendar = () => {
 				actions.handleAppointment("deleted", deleted);
 
 				data = data.filter(appointment => appointment.id !== deleted);
+				console.log("deleted data", deleted);
 			}
 			return { ...state, data };
 		});
 	}
 
 	const { currentDate, data, addedAppointment, appointmentChanges, editingAppointment, currentViewName } = state;
-	console.log("THIS IS DATA", data);
 	return (
 		<>
 			{data.length > 0 && (

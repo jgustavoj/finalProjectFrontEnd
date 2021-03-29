@@ -29,7 +29,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			// adds appointments to the backend from the calendar
-			handleAppointment: (param, param2, id) => {
+			handleAppointment: (param, deleted) => {
 				const store = getStore();
 				if (param == "added") {
 					console.log("param2: ", param2);
@@ -49,24 +49,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 						getActions().getAllTheAppointmentsFromBackend();
 					});
 				}
-				if (param == "changed") {
-					// fetch(`${url}appointments${id}`, {
-					// 	method: "PUT",
-					// 	headers: { "Content-Type": "application/json" },
-					// 	body: JSON.stringify({
-					// 		title: param2.title,
-					// 		startDate: param2.startDate.toISOString().replace("Z", ""),
-					// 		endDate: param2.endDate.toISOString().replace("Z", ""),
-					// 		location: param2.title
-					// 	})
-					// }).then(() => {
-					// 	fetch(`${url}appointments`)
-					// 		.then(response => response.json())
-					// 		.then(data => {
-					// 			console.log("Created", data);
-					// 			setStore({ appointments: data });
-					// 		});
-					// });
+				// if (param == "changed") {
+				// 	// fetch(`${url}appointments${id}`, {
+				// 	// 	method: "PUT",
+				// 	// 	headers: { "Content-Type": "application/json" },
+				// 	// 	body: JSON.stringify({
+				// 	// 		title: param2.title,
+				// 	// 		startDate: param2.startDate.toISOString().replace("Z", ""),
+				// 	// 		endDate: param2.endDate.toISOString().replace("Z", ""),
+				// 	// 		location: param2.title
+				// 	// 	})
+				// 	// }).then(() => {
+				// 	// 	fetch(`${url}appointments`)
+				// 	// 		.then(response => response.json())
+				// 	// 		.then(data => {
+				// 	// 			console.log("Created", data);
+				// 	// 			setStore({ appointments: data });
+				// 	// 		});
+				// 	// });
+				// }
+				if (deleted) {
+					fetch(`${url}appointments/${deleted}`, {
+						method: "DELETE",
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: `Bearer ${store.token}`
+						}
+					}).then(() => {
+						getActions().getAllTheAppointmentsFromBackend();
+					});
 				}
 			},
 
