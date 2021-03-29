@@ -38,11 +38,11 @@ export const Navbar = () => {
 			</Link>
 
 			<div className="float-left">
-				{store.loggedIn && (
-					<Link to="calendar">
-						<button className="btn btn-light m-auto mb-0 h1">Calendar</button>
-					</Link>
-				)}
+				{/* {store.loggedIn && ( */}
+				<Link to="/calendar">
+					<button className="btn btn-light m-auto mb-0 h1">Calendar</button>
+				</Link>
+				{/* )} */}
 			</div>
 
 			<div className="ml-auto" />

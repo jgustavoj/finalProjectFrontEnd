@@ -8,14 +8,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 			loggedIn: false,
 			users: [{}],
 			appointments: [],
-			currentUser: {},
+			//currentUser: {},
 			token: null
 		},
 		actions: {
 			// GETS all the appointments from the backend listed in the calendar
-			getAllTheAppointmentsFromBackend: async () => {
+			getAllTheAppointmentsFromBackend: () => {
 				const store = getStore();
-				await fetch(`${url}appointments`, {
+				fetch(`${url}appointments`, {
 					method: "GET",
 					headers: {
 						"Content-Type": "application/json",
@@ -24,7 +24,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					.then(response => response.json())
 					.then(data => {
-						console.log("Fetched user appointments", data);
+						// console.log("Fetched user appointments", data);
 						setStore({ appointments: data });
 					});
 			},
@@ -46,12 +46,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 							location: param2.title
 						})
 					}).then(() => {
-						fetch(`${url}appointments`)
-							.then(response => response.json())
-							.then(data => {
-								console.log("Created", data);
-								setStore({ appointments: data });
-							});
+						getActions().getAllTheAppointmentsFromBackend();
 					});
 				}
 				if (param == "changed") {
@@ -153,8 +148,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				// history.push("/calendar");
 			},
 
-			signUp: async (firstName, lastName, email, phoneNumber, password) => {
-				await fetch(`${url}user`, {
+			signUp: (firstName, lastName, email, phoneNumber, password) => {
+				fetch(`${url}user`, {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify({
@@ -164,19 +159,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 						phone_number: phoneNumber,
 						password: password
 					})
-				});
-				//  let results = await response.json();
-				//  if (response.ok){
-				//  return true
-				//  } else  {
-				//  return false
-				// }
-				//
-				// .then(response => response.json())
-				// .then(data => {
-				// 	console.log("User Created", data);
-				// 	setStore({ users: data });
-				// });
+				})
+					.then(response => response.json())
+					.then(data => {
+						console.log("User Created", data);
+						setStore({ users: data });
+					});
 			}
 		}
 	};

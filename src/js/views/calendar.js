@@ -23,6 +23,7 @@ export const Calendar = () => {
 	const [view, setView] = useState("Month");
 	const [dateView, setDateView] = useState(new Date());
 	const { store, actions } = useContext(Context);
+	const url = "https://3000-a1007fd4-1ba0-4ea4-a40d-d94e9227503b.ws-us03.gitpod.io/";
 	const [state, setState] = useState({
 		data: store.appointments,
 		currentDate: new Date(),
@@ -31,16 +32,26 @@ export const Calendar = () => {
 		editingAppointment: undefined
 	});
 
-	// useEffect(
-	// 	() => {
-	// 		// Update the document title using the browser API
-	// 		const test = async () => {
-	// 			setState({ ...state, data: store.appointments });
-	// 		};
-	// 		test();
-	// 	},
-	// 	[store.appointments]
-	// );
+	// useEffect(() => {
+	// 	actions.getAllTheAppointmentsFromBackend();
+	// }, []);
+
+	useEffect(() => {
+		// Update the document title using the browser API
+		const test = async () => {
+			let getData = await fetch(`${url}appointments`, {
+				method: "GET",
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: `Bearer ${store.token}`
+				}
+			});
+			let response = await getData.json();
+			setState({ ...state, data: response });
+			// setState({ ...state, data: store.appointments });
+		};
+		test();
+	}, []);
 
 	function changeAddedAppointment(addedAppointment) {
 		setState({ ...state, addedAppointment });
@@ -81,39 +92,43 @@ export const Calendar = () => {
 	}
 
 	const { currentDate, data, addedAppointment, appointmentChanges, editingAppointment, currentViewName } = state;
-
+	console.log("THIS IS DATA", data);
 	return (
-		<Paper>
-			<Scheduler data={data} height={700}>
-				<ViewState
-					currentViewName={view}
-					onCurrentViewNameChange={setView} //changes the current view to whatever date the user chooses
-					currentDate={dateView}
-					onCurrentDateChange={setDateView}
-				/>
-				<EditingState
-					onCommitChanges={commitChanges}
-					addedAppointment={addedAppointment}
-					onAddedAppointmentChange={changeAddedAppointment}
-					appointmentChanges={appointmentChanges}
-					onAppointmentChangesChange={changeAppointmentChanges}
-					editingAppointment={editingAppointment}
-					onEditingAppointmentChange={changeEditingAppointment}
-				/>
-				<WeekView startDayHour={7} endDayHour={24} />
-				<MonthView />
-				<DayView />
-				<AllDayPanel />
-				<EditRecurrenceMenu />
-				<ConfirmationDialog />
-				<Appointments />
-				<AppointmentTooltip showOpenButton showDeleteButton />
-				<AppointmentForm />
-				<Toolbar />
-				<DateNavigator />
-				<TodayButton />
-				<ViewSwitcher />
-			</Scheduler>
-		</Paper>
+		<>
+			{data.length > 0 && (
+				<Paper>
+					<Scheduler data={data} height={700}>
+						<ViewState
+							currentViewName={view}
+							onCurrentViewNameChange={setView} //changes the current view to whatever date the user chooses
+							currentDate={dateView}
+							onCurrentDateChange={setDateView}
+						/>
+						<EditingState
+							onCommitChanges={commitChanges}
+							addedAppointment={addedAppointment}
+							onAddedAppointmentChange={changeAddedAppointment}
+							appointmentChanges={appointmentChanges}
+							onAppointmentChangesChange={changeAppointmentChanges}
+							editingAppointment={editingAppointment}
+							onEditingAppointmentChange={changeEditingAppointment}
+						/>
+						<WeekView startDayHour={7} endDayHour={24} />
+						<MonthView />
+						<DayView />
+						<AllDayPanel />
+						<EditRecurrenceMenu />
+						<ConfirmationDialog />
+						<Appointments />
+						<AppointmentTooltip showOpenButton showDeleteButton />
+						<AppointmentForm />
+						<Toolbar />
+						<DateNavigator />
+						<TodayButton />
+						<ViewSwitcher />
+					</Scheduler>
+				</Paper>
+			)}{" "}
+		</>
 	);
 };
