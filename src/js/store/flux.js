@@ -6,7 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			loggedIn: false,
-			users: [{}],
+			users: [],
 			appointments: [],
 			//currentUser: {},
 			token: null
@@ -24,12 +24,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					.then(response => response.json())
 					.then(data => {
-						// console.log("Fetched user appointments", data);
+						console.log("Fetched user appointments", data);
 						setStore({ appointments: data });
 					});
 			},
 			// adds appointments to the backend from the calendar
-			handleAppointment: (param, deleted) => {
+			handleAppointment: (param, param2, deleted) => {
 				const store = getStore();
 				if (param == "added") {
 					console.log("param2: ", param2);
